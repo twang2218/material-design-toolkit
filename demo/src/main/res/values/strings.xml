@@ -2,9 +2,13 @@
 <resources>
 
     <string name="app_name">Material Design Toolkit Demo</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="title_activity_ripple">RippleActivity</string>
     <string name="title_activity_shadow">ShadowActivity</string>
+    <string name="str_ripple">Ripple</string>
+    <string name="str_shadow">Shadow</string>
+    <string name="color_text">Amber a200</string>
+    <string name="transparent_text">Transparent</string>
+    <string name="button">Button</string>
+    <string name="inside_button">Inside Button</string>
 
 </resources>

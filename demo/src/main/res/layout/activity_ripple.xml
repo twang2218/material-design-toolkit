@@ -15,7 +15,7 @@
         android:background="@color/md_amber_a200"
         android:focusable="true"
         android:padding="20dp"
-        android:text="Amber a200" />
+        android:text="@string/color_text" />
 
     <TextView
         android:id="@+id/text_transparent"
@@ -25,7 +25,8 @@
         android:layout_toRightOf="@id/text"
         android:focusable="true"
         android:padding="20dp"
-        android:text="Transparent" />
+        android:text="@string/transparent_text"
+        tools:ignore="RtlHardcoded" />
 
     <Button
         android:id="@+id/button"
@@ -33,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text"
         android:padding="16dp"
-        android:text="Button" />
+        android:text="@string/button" />
 
     <Button
         android:id="@+id/button_inside"
@@ -41,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/button"
         android:padding="16dp"
-        android:text="Inside Button" />
+        android:text="@string/inside_button" />
 
     <TextView
         android:id="@+id/arena"

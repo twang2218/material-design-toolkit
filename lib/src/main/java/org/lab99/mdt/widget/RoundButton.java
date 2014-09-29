@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -177,7 +178,7 @@ public class RoundButton extends View implements Shadow.BackgroundDrawer {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public boolean onTouchEvent(@NonNull MotionEvent event) {
         int action = event.getAction() & MotionEvent.ACTION_MASK;
         if (isClickable()) {
             if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_DOWN) {

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.RobotoRegular" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TextAppearance.RobotoLight" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="TextAppearance.RobotoCondensed" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+
+    <style name="TextAppearance.RobotoThin" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+
+</resources>

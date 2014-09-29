@@ -1,10 +1,12 @@
 package org.lab99.mdt.widget;
 
 
+import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.view.View;
 
+@SuppressLint("ViewConstructor")
 public class RippleView extends View {
     private View mView;
     private RippleAnimation mAnimation;

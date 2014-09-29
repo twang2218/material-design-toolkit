@@ -14,12 +14,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="Ripple" />
+        android:text="@string/str_ripple" />
 
     <Button
         android:id="@+id/button_shadow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="Shadow" />
+        android:text="@string/str_shadow" />
 </LinearLayout>

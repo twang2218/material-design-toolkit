@@ -1,20 +1,12 @@
 <resources>
     <!--Roboto Font-->
-    <style name="TextAppearance.RobotoRegular" parent="@android:style/TextAppearance">
-        <item name="android:fontFamily">sans-serif</item>
-    </style>
+    <style name="TextAppearance.RobotoRegular" parent="@android:style/TextAppearance" />
 
-    <style name="TextAppearance.RobotoLight" parent="@android:style/TextAppearance">
-        <item name="android:fontFamily">sans-serif-light</item>
-    </style>
+    <style name="TextAppearance.RobotoLight" parent="@android:style/TextAppearance" />
 
-    <style name="TextAppearance.RobotoCondensed" parent="@android:style/TextAppearance">
-        <item name="android:fontFamily">sans-serif-condensed</item>
-    </style>
+    <style name="TextAppearance.RobotoCondensed" parent="@android:style/TextAppearance" />
 
-    <style name="TextAppearance.RobotoThin" parent="@android:style/TextAppearance">
-        <item name="android:fontFamily">sans-serif-thin</item>
-    </style>
+    <style name="TextAppearance.RobotoThin" parent="@android:style/TextAppearance" />
 
     <!--Text Style-->
 
@@ -63,7 +55,7 @@
     <color name="md_button_dark">@color/md_white_87</color>
 
     <!--Base Style    -->
-    <style name="TextAppearance.MaterialDesign" parent="TextAppearance.RobotoRegular"></style>
+    <style name="TextAppearance.MaterialDesign" parent="TextAppearance.RobotoRegular" />
 
     <!--Light Theme (Default)-->
     <style name="TextAppearance.MaterialDesign.Display4" parent="TextAppearance.RobotoLight">
