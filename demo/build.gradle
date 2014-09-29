@@ -1,0 +1,32 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion "20.0.0"
+
+    defaultConfig {
+        applicationId "org.lab99.mdt.demo"
+        minSdkVersion 8
+        targetSdkVersion 20
+        versionCode 1
+        versionName "1.0"
+        //  Since MDT depends on RenderScript, so these 2 lines has to be added to enable RenderScript.
+        renderscriptTargetApi 20
+        renderscriptSupportMode true
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:20.0.0'
+    compile project(':lib')
+}

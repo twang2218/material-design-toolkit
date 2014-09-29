@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RoundButton">
+        <attr name="android:icon" />
+        <attr name="backgroundColor" format="color" />
+        <attr name="shadow" format="boolean" />
+        <attr name="iconSize" format="dimension" />
+        <attr name="depth" format="float" />
+        <attr name="android:padding" />
+        <attr name="widgetWidth" format="dimension" />
+        <attr name="widgetHeight" format="dimension" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,183 @@
+<resources>
+    <!--Roboto Font-->
+    <style name="TextAppearance.RobotoRegular" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TextAppearance.RobotoLight" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="TextAppearance.RobotoCondensed" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+
+    <style name="TextAppearance.RobotoThin" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+
+    <!--Text Style-->
+
+    <!--Text Style - Dimension-->
+    <dimen name="md_display_4">112sp</dimen>
+    <dimen name="md_display_3">56sp</dimen>
+    <dimen name="md_display_2">45sp</dimen>
+    <dimen name="md_display_1">34sp</dimen>
+    <dimen name="md_headline">24sp</dimen>
+    <dimen name="md_title">20sp</dimen>
+    <dimen name="md_subhead">16sp</dimen>
+    <dimen name="md_body_2">14sp</dimen>
+    <dimen name="md_body_1">14sp</dimen>
+    <dimen name="md_caption">12sp</dimen>
+    <dimen name="md_menu">14sp</dimen>
+    <dimen name="md_button">14sp</dimen>
+
+    <!--Text Style - Color-->
+
+    <!--Light Theme Text Color-->
+    <color name="md_display_4_light">@color/md_black_54</color>
+    <color name="md_display_3_light">@color/md_black_54</color>
+    <color name="md_display_2_light">@color/md_black_54</color>
+    <color name="md_display_1_light">@color/md_black_54</color>
+    <color name="md_headline_light">@color/md_black_87</color>
+    <color name="md_title_light">@color/md_black_87</color>
+    <color name="md_subhead_light">@color/md_black_87</color>
+    <color name="md_body_2_light">@color/md_black_87</color>
+    <color name="md_body_1_light">@color/md_black_87</color>
+    <color name="md_caption_light">@color/md_black_54</color>
+    <color name="md_menu_light">@color/md_black_87</color>
+    <color name="md_button_light">@color/md_black_87</color>
+
+    <!--Dark Theme Text Color-->
+    <color name="md_display_4_dark">@color/md_white_54</color>
+    <color name="md_display_3_dark">@color/md_white_54</color>
+    <color name="md_display_2_dark">@color/md_white_54</color>
+    <color name="md_display_1_dark">@color/md_white_54</color>
+    <color name="md_headline_dark">@color/md_white_87</color>
+    <color name="md_title_dark">@color/md_white_87</color>
+    <color name="md_subhead_dark">@color/md_white_87</color>
+    <color name="md_body_2_dark">@color/md_white_87</color>
+    <color name="md_body_1_dark">@color/md_white_87</color>
+    <color name="md_caption_dark">@color/md_white_54</color>
+    <color name="md_menu_dark">@color/md_white_87</color>
+    <color name="md_button_dark">@color/md_white_87</color>
+
+    <!--Base Style    -->
+    <style name="TextAppearance.MaterialDesign" parent="TextAppearance.RobotoRegular"></style>
+
+    <!--Light Theme (Default)-->
+    <style name="TextAppearance.MaterialDesign.Display4" parent="TextAppearance.RobotoLight">
+        <item name="android:textColor">@color/md_display_4_light</item>
+        <item name="android:textSize">@dimen/md_display_4</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Display3">
+        <item name="android:textColor">@color/md_display_3_light</item>
+        <item name="android:textSize">@dimen/md_display_3</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Display2">
+        <item name="android:textColor">@color/md_display_2_light</item>
+        <item name="android:textSize">@dimen/md_display_2</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Display1">
+        <item name="android:textColor">@color/md_display_1_light</item>
+        <item name="android:textSize">@dimen/md_display_1</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Headline">
+        <item name="android:textColor">@color/md_headline_light</item>
+        <item name="android:textSize">@dimen/md_headline</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Title">
+        <item name="android:textColor">@color/md_title_light</item>
+        <item name="android:textSize">@dimen/md_title</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Subhead">
+        <item name="android:textColor">@color/md_subhead_light</item>
+        <item name="android:textSize">@dimen/md_subhead</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Body2">
+        <item name="android:textColor">@color/md_body_2_light</item>
+        <item name="android:textSize">@dimen/md_body_2</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Body1">
+        <item name="android:textColor">@color/md_body_1_light</item>
+        <item name="android:textSize">@dimen/md_body_1</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Caption">
+        <item name="android:textColor">@color/md_caption_light</item>
+        <item name="android:textSize">@dimen/md_caption</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Menu">
+        <item name="android:textColor">@color/md_menu_light</item>
+        <item name="android:textSize">@dimen/md_menu</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Button">
+        <item name="android:capitalize">characters</item>
+        <item name="android:textColor">@color/md_button_light</item>
+        <item name="android:textSize">@dimen/md_button</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--Dark Theme-->
+    <style name="TextAppearance.MaterialDesign.Display4.Dark">
+        <item name="android:textColor">@color/md_display_4_dark</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Display3.Dark">
+        <item name="android:textColor">@color/md_display_3_dark</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Display2.Dark">
+        <item name="android:textColor">@color/md_display_2_dark</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Display1.Dark">
+        <item name="android:textColor">@color/md_display_1_dark</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Headline.Dark">
+        <item name="android:textColor">@color/md_headline_dark</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Title.Dark">
+        <item name="android:textColor">@color/md_title_dark</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Subhead.Dark">
+        <item name="android:textColor">@color/md_subhead_dark</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Body2.Dark">
+        <item name="android:textColor">@color/md_body_2_dark</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Body1.Dark">
+        <item name="android:textColor">@color/md_body_1_dark</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Caption.Dark">
+        <item name="android:textColor">@color/md_caption_dark</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Menu.Dark">
+        <item name="android:textColor">@color/md_menu_dark</item>
+    </style>
+
+    <style name="TextAppearance.MaterialDesign.Button.Dark">
+        <item name="android:textColor">@color/md_button_dark</item>
+    </style>
+
+</resources>
