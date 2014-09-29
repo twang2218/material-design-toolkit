@@ -1,4 +1,14 @@
 language: android
+jdk: openjdk7
+env:
+    matrix:
+        - ANDROID_TARGET=android-20  ANDROID_ABI=armeabi-v7a
+        - ANDROID_TARGET=android-19  ANDROID_ABI=armeabi-v7a
+        - ANDROID_TARGET=android-16  ANDROID_ABI=armeabi-v7a
+        - ANDROID_TARGET=android-15  ANDROID_ABI=armeabi-v7a
+        - ANDROID_TARGET=android-10  ANDROID_ABI=armeabi-v7a
+        - ANDROID_TARGET=android-8  ANDROID_ABI=armeabi-v7a
+
 android:
     components:
         - build-tools-20.0.0
@@ -8,3 +18,16 @@ android:
         - extra-android-m2repository
     licenses:
         - '.+'
+
+branches:
+    except:
+        - gh-pages
+
+before_script:
+    - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
+    - emulator -avd test -no-skin -no-audio -no-window &
+    - android-wait-for-emulator
+    - adb shell input keyevent 82 &
+
+#script:
+#    - ./gradlew clean assemble check

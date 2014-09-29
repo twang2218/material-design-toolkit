@@ -95,7 +95,7 @@ public class RippleAnimation {
     /**
      * Creating RippleAnimator will replace the given 'view' background drawable with a wrapper RippleDrawable.
      *
-     * @param view
+     * @param view attached view
      */
     public RippleAnimation(View view) {
         if (view == null) {
@@ -203,6 +203,7 @@ public class RippleAnimation {
         setViewBackground(mOriginal);
     }
 
+    @SuppressWarnings("deprecation")
     private void setViewBackground(Drawable drawable) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             mView.setBackground(drawable);

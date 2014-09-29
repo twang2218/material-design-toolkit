@@ -12,6 +12,7 @@ import android.view.WindowManager;
 
 public final class Utils {
 
+    @SuppressWarnings("deprecation")
     public static Point getScreenSize(Context context) {
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = windowManager.getDefaultDisplay();
@@ -25,6 +26,7 @@ public final class Utils {
         return size;
     }
 
+    @SuppressWarnings("deprecation")
     public static void setBackground(View view, Drawable drawable) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             view.setBackground(drawable);
