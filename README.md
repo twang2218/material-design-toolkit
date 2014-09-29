@@ -6,6 +6,15 @@ Material Design Toolkit
 
 Implementation of some building blocks of Material Design
 
+Widgets
+-------
+
  * Ripple
  * Shadow
 
+Palette
+--------
+
+Color Palette from [Material Design guideline > Style > Color](http://www.google.com/design/spec/style/color.html)
+
+![Color Palette](art/resource_color.png)
