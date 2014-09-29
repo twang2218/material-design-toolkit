@@ -106,8 +106,8 @@ public class RippleAnimation {
         //  Replace the original Drawable with RippleDrawable
         mOriginal = view.getBackground();
         mRipple = new RippleDrawable(mOriginal);
-        mRipple.setOverlayColor(view.getResources().getColor(R.color.md_button_hover_dark));
-        mRipple.setRippleColor(view.getResources().getColor(R.color.md_button_pressed_dark));
+        mRipple.setOverlayColor(view.getResources().getColor(R.color.mdt_button_hover_dark));
+        mRipple.setRippleColor(view.getResources().getColor(R.color.mdt_button_pressed_dark));
         mRipple.setEnableRipple(false);
         mRipple.setEnableOverlay(false);
         mRipple.setRippleCenter(mView.getWidth() / 2, mView.getHeight() / 2);

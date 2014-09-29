@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_grey_200"
+    android:background="@color/mdt_grey_200"
     android:orientation="vertical"
     android:paddingTop="56dp"
     tools:ignore="Overdraw">
@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            app:backgroundColor="@color/md_white"
+            app:backgroundColor="@color/mdt_white"
             app:depth="0" />
 
         <org.lab99.mdt.widget.RoundButton
@@ -26,9 +26,9 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:icon="@drawable/ic_key_white"
-            android:padding="@dimen/md_shadow_padding_depth_1"
+            android:padding="@dimen/mdt_shadow_padding_depth_1"
             android:rotation="10"
-            app:backgroundColor="@color/md_white"
+            app:backgroundColor="@color/mdt_white"
             app:depth="1"
             tools:ignore="UnusedAttribute" />
 
@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:icon="@drawable/ic_shield_white"
-            android:padding="@dimen/md_shadow_padding_depth_2"
-            app:backgroundColor="@color/md_white"
+            android:padding="@dimen/mdt_shadow_padding_depth_2"
+            app:backgroundColor="@color/mdt_white"
             app:depth="2" />
 
     </LinearLayout>
@@ -54,8 +54,8 @@
             android:layout_marginLeft="-13dp"
             android:layout_marginRight="-13dp"
             android:clickable="true"
-            android:padding="@dimen/md_shadow_padding_depth_3"
-            app:backgroundColor="@color/md_white"
+            android:padding="@dimen/mdt_shadow_padding_depth_3"
+            app:backgroundColor="@color/mdt_white"
             app:depth="3" />
 
         <org.lab99.mdt.widget.RoundButton
@@ -65,9 +65,9 @@
             android:layout_marginBottom="-20dp"
             android:layout_marginLeft="-20dp"
             android:layout_marginRight="-20dp"
-            android:padding="@dimen/md_shadow_padding_depth_4"
+            android:padding="@dimen/mdt_shadow_padding_depth_4"
             android:rotation="30"
-            app:backgroundColor="@color/md_white"
+            app:backgroundColor="@color/mdt_white"
             app:depth="4"
             tools:ignore="UnusedAttribute" />
 
@@ -75,9 +75,9 @@
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/md_shadow_padding_depth_5"
+            android:padding="@dimen/mdt_shadow_padding_depth_5"
             android:rotation="90"
-            app:backgroundColor="@color/md_white"
+            app:backgroundColor="@color/mdt_white"
             app:depth="5"
             tools:ignore="UnusedAttribute" />
     </LinearLayout>
@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:icon="@drawable/ic_folder"
-            app:backgroundColor="@color/md_white"
+            app:backgroundColor="@color/mdt_white"
             app:depth="0" />
 
         <org.lab99.mdt.widget.RoundButton
@@ -100,7 +100,7 @@
             android:clickable="true"
             android:icon="@drawable/ic_key_white"
             android:rotation="20"
-            app:backgroundColor="@color/md_blue_500"
+            app:backgroundColor="@color/mdt_blue_500"
             app:depth="1"
             tools:ignore="UnusedAttribute" />
 
@@ -109,10 +109,10 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:icon="@drawable/ic_shield_white"
-            app:backgroundColor="@color/md_red_500"
+            app:backgroundColor="@color/mdt_red_500"
             app:depth="2"
-            app:widgetHeight="@dimen/md_fab_small_size"
-            app:widgetWidth="@dimen/md_fab_small_size" />
+            app:widgetHeight="@dimen/mdt_fab_small_size"
+            app:widgetWidth="@dimen/mdt_fab_small_size" />
 
     </LinearLayout>
 
@@ -126,7 +126,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="-30dp"
-            app:backgroundColor="@color/md_purple_500"
+            app:backgroundColor="@color/mdt_purple_500"
             app:depth="3" />
 
         <org.lab99.mdt.widget.RoundButton
@@ -134,7 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="-30dp"
             android:rotation="-30"
-            app:backgroundColor="@color/md_green_500"
+            app:backgroundColor="@color/mdt_green_500"
             app:depth="4"
             tools:ignore="UnusedAttribute" />
 
@@ -143,7 +143,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="-30dp"
             android:rotation="92"
-            app:backgroundColor="@color/md_deep_orange_500"
+            app:backgroundColor="@color/mdt_deep_orange_500"
             app:depth="5"
             tools:ignore="UnusedAttribute" />
     </LinearLayout>

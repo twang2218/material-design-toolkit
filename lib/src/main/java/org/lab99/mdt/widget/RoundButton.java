@@ -24,11 +24,11 @@ public class RoundButton extends View implements Shadow.BackgroundDrawer {
     //  http://www.google.com/design/spec/animation/responsive-interaction.html#responsive-interaction-ink-reactions
     private final static float TOUCH_LIFT_DEPTH = 2;
     private final static int[] DEFAULT_PADDING_ID = {
-            R.dimen.md_shadow_padding_depth_1,
-            R.dimen.md_shadow_padding_depth_2,
-            R.dimen.md_shadow_padding_depth_3,
-            R.dimen.md_shadow_padding_depth_4,
-            R.dimen.md_shadow_padding_depth_5
+            R.dimen.mdt_shadow_padding_depth_1,
+            R.dimen.mdt_shadow_padding_depth_2,
+            R.dimen.mdt_shadow_padding_depth_3,
+            R.dimen.mdt_shadow_padding_depth_4,
+            R.dimen.mdt_shadow_padding_depth_5
     };
 
     //  properties
@@ -87,8 +87,8 @@ public class RoundButton extends View implements Shadow.BackgroundDrawer {
                 setIcon(a.getDrawable(R.styleable.RoundButton_android_icon));
                 setShowShadow(a.getBoolean(R.styleable.RoundButton_shadow, mShowShadow));
                 setColor(a.getColor(R.styleable.RoundButton_backgroundColor, mColor));
-                setIconSize(a.getDimension(R.styleable.RoundButton_iconSize, res.getDimension(R.dimen.md_icon_size)));
-                float default_fab_size = res.getDimension(R.dimen.md_fab_large_size);
+                setIconSize(a.getDimension(R.styleable.RoundButton_iconSize, res.getDimension(R.dimen.mdt_icon_size)));
+                float default_fab_size = res.getDimension(R.dimen.mdt_fab_large_size);
                 setWidgetWidth(a.getDimension(R.styleable.RoundButton_widgetWidth, default_fab_size));
                 setWidgetHeight(a.getDimension(R.styleable.RoundButton_widgetHeight, default_fab_size));
                 setDepth(a.getFloat(R.styleable.RoundButton_depth, 0));

@@ -31,7 +31,7 @@ public class RippleActivity extends ActionBarActivity {
         View buttonInside = findViewById(R.id.button_inside);
         View arena = findViewById(R.id.arena);
         RippleAnimation animator = new RippleAnimation(arena)
-                .setRippleColor(getResources().getColor(R.color.md_red_500))
+                .setRippleColor(getResources().getColor(R.color.mdt_red_500))
                 .setEnableFocusedAnimation(true);
         animator.setTouchView(buttonInside);
     }
