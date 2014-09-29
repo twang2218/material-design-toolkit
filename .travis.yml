@@ -11,7 +11,17 @@ env:
 android:
     components:
         - build-tools-20.0.0
+        # targets
         - android-8
+        - android-10
+        - android-15
+        - android-16
+        - android-19
+        - android-20
+        # extra
+        - extra-android-support
+        - extra-android-m2repository
+
     licenses:
         - '.+'
 
