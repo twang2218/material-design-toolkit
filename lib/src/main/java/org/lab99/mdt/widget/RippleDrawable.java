@@ -1,5 +1,6 @@
 package org.lab99.mdt.widget;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -10,19 +11,26 @@ import android.graphics.PointF;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
+
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.animation.ValueAnimator;
+
+import org.lab99.mdt.R;
+
+import java.lang.ref.WeakReference;
 
 /**
  * Ripple Drawable to simulate Material Design Ripple effect
  */
-class RippleDrawable extends Drawable {
+public class RippleDrawable extends Drawable {
     private final static int DEFAULT_MIN_RADIUS = 30;
     private final static float MAX_RADIUS_FACTOR = 1f;
-    private Drawable mOriginalDrawable;
-    private PointF mCenter;
+    private PointF mCenter = new PointF();
     private float mRadius;
     private float mMinRadius;
     private float mMaxRadius;
@@ -37,29 +45,25 @@ class RippleDrawable extends Drawable {
     private Bitmap mBitmapBackground;
     private boolean mEnableRipple = true;
     private boolean mEnableOverlay = true;
+    private IDrawer mMaskDrawer;
+    private TouchTracker mTouchTracker;
+    private OnStateChangedListener mOnStateChangedListener;
 
-    private View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
-
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            if (v.isPressed()) {
-                mCenter.set(event.getRawX(), event.getRawY());
-            }
-            return false;
-        }
-    };
-
-    public RippleDrawable(Drawable drawable) {
+    public RippleDrawable(Resources res) {
         mPaintRipple.setAntiAlias(true);
         mPaintOverlay.setAntiAlias(true);
         mPaintOverlay.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
-        mOriginalDrawable = drawable;
+        if (res != null) {
+            setOverlayColor(res.getColor(R.color.mdt_button_hover_dark));
+            setRippleColor(res.getColor(R.color.mdt_button_pressed_dark));
+        }
+        setEnableRipple(false);
+        setEnableOverlay(false);
+
+        mOnStateChangedListener = new RippleTransitAnimator(this);
+
         mMinRadius = DEFAULT_MIN_RADIUS;
         mGeneralAlpha = 1;
-        if (mOriginalDrawable != null) {
-            setBounds(mOriginalDrawable.getBounds());
-        }
-        mCenter = new PointF();
         mRippleProgress = 0;
     }
 
@@ -84,6 +88,18 @@ class RippleDrawable extends Drawable {
         //System.out.println("setOverlayAlpha(" + alpha + ")");
         mOverlayAlpha = alpha;
         invalidateSelf();
+    }
+
+    public OnStateChangedListener getOnStateChangedListener() {
+        return mOnStateChangedListener;
+    }
+
+    public void setOnStateChangedListener(OnStateChangedListener listener) {
+        mOnStateChangedListener = listener;
+    }
+
+    public PointF getRippleCenter() {
+        return mCenter;
     }
 
     public RippleDrawable setRippleCenter(float x, float y) {
@@ -123,29 +139,32 @@ class RippleDrawable extends Drawable {
         return this;
     }
 
-    public RippleDrawable setOriginalDrawable(Drawable drawable) {
-        mOriginalDrawable = drawable;
-        mOriginalDrawable.setBounds(getBounds());
-        if (mBitmapBackground == null && !getBounds().isEmpty()) {
-            createBitmaps();
-        }
-        return this;
+    public IDrawer getMaskDrawer() {
+        return mMaskDrawer;
+    }
+
+    public void setMaskDrawer(IDrawer drawer) {
+        mMaskDrawer = drawer;
+    }
+
+    public TouchTracker getTouchTracker() {
+        return mTouchTracker;
+    }
+
+    public void setTouchTracker(TouchTracker tracker) {
+        mTouchTracker = tracker;
     }
 
     @Override
     public void draw(Canvas canvas) {
-        if (mOriginalDrawable != null && !getBounds().isEmpty()) {
-            if (mOriginalDrawable instanceof ColorDrawable) {
-                //  For ColorDrawable, there no need to do Mode.SRC_ATOP, so just draw one on another;
-                mOriginalDrawable.draw(canvas);
-                drawRipple(canvas);
-            } else {
+        if (!getBounds().isEmpty()) {
+            if (getMaskDrawer() != null) {
                 //  Because we need PorterDuff.Mode.SRC_ATOP later, the canvas has to be empty
                 //  So, we cannot use given canvas, which contains other stuff already.
                 Canvas c = new Canvas(mBitmapBackground);
                 c.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
                 //  draw background
-                mOriginalDrawable.draw(c);
+                getMaskDrawer().draw(c);
 
                 //  Render Ripple Layer
                 //  Ripple has to be drawn on a Bitmap layer, otherwise later Mode.SRC_ATOP will be wrong
@@ -159,47 +178,37 @@ class RippleDrawable extends Drawable {
 
                 //  draw everything on given canvas
                 canvas.drawBitmap(mBitmapBackground, 0, 0, null);
+            } else {
+                //  draw ripple directly
+                drawRipple(canvas);
             }
-        } else {
-            //  draw ripple directly
-            drawRipple(canvas);
-        }
-
-    }
-
-    @Override
-    public void setAlpha(int alpha) {
-        if (mOriginalDrawable != null) {
-            mOriginalDrawable.setAlpha(alpha);
         }
     }
 
     @Override
     public void setColorFilter(ColorFilter cf) {
-        if (mOriginalDrawable != null) {
-            mOriginalDrawable.setColorFilter(cf);
-        }
+        mPaintOverlay.setColorFilter(cf);
+        mPaintRipple.setColorFilter(cf);
     }
 
     @Override
     public int getOpacity() {
-        if (mOriginalDrawable != null) {
-            return mOriginalDrawable.getOpacity();
-        } else {
-            return PixelFormat.TRANSPARENT;
-        }
+        return PixelFormat.UNKNOWN;
     }
 
     @Override
     protected void onBoundsChange(Rect bounds) {
         super.onBoundsChange(bounds);
-        if (mOriginalDrawable != null) {
-            mOriginalDrawable.setBounds(bounds);
-            if (!bounds.isEmpty()) {
-                createBitmaps();
-            }
+        if (!bounds.isEmpty()) {
+            createBitmaps();
         }
         calculateMaxRadius(bounds.left, bounds.top, bounds.right, bounds.bottom);
+        setRippleCenter(bounds.width() / 2, bounds.height() / 2);
+    }
+
+    @Override
+    public void setAlpha(int alpha) {
+        setGeneralAlpha(alpha / 255f);
     }
 
     @Override
@@ -209,22 +218,34 @@ class RippleDrawable extends Drawable {
 
     @Override
     public boolean setState(int[] stateSet) {
-        boolean ret = false;
-        if (mOriginalDrawable != null) {
-            ret = mOriginalDrawable.setState(stateSet);
-        }
-
         boolean prev_pressed = contains(getState(), android.R.attr.state_pressed);
         boolean next_pressed = contains(stateSet, android.R.attr.state_pressed);
+        boolean prev_focused = contains(getState(), android.R.attr.state_focused);
+        boolean next_focused = contains(stateSet, android.R.attr.state_focused);
 
-        if (!prev_pressed && next_pressed) {
-            System.err.println("setState(): Pressed");
-        } else if (prev_pressed && !next_pressed) {
-            System.err.println("setState(): Released");
+        if (getOnStateChangedListener() != null) {
+            if (prev_pressed != next_pressed) {
+                //  pressed status changed
+                if (next_pressed) {
+                    System.err.println("setState(): Pressed");
+                    getOnStateChangedListener().onPressed();
+                } else {
+                    System.err.println("setState(): Released");
+                    getOnStateChangedListener().onReleased();
+                }
+            }
+            if (prev_focused != next_focused) {
+                //  focused status changed
+                if (next_focused) {
+                    System.err.println("setState(): Focused");
+                    getOnStateChangedListener().onFocused();
+                } else {
+                    System.err.println("setState(): Unfocused");
+                    getOnStateChangedListener().onReleased();
+                }
+            }
         }
-
-
-        return ret || super.setState(stateSet);
+        return super.setState(stateSet);
     }
 
     private boolean contains(int[] array, int value) {
@@ -301,6 +322,193 @@ class RippleDrawable extends Drawable {
             mPaintRipple.setColor(mRippleColor);
             mPaintRipple.setAlpha((int) (Color.alpha(mRippleColor) * mGeneralAlpha));
             canvas.drawCircle(mCenter.x, mCenter.y, mRadius, mPaintRipple);
+        }
+    }
+
+    static class RippleTransitAnimator implements OnStateChangedListener {
+        private final static long DEFAULT_DURATION = 300;
+        private final static float FOCUS_RANGE_LARGE = 0.30f;
+        private final static float FOCUS_RANGE_SMALL = 0.25f;
+
+        private WeakReference<RippleDrawable> mRipple;
+        private ObjectAnimator mRippleAnimator;
+        private ObjectAnimator mOverlayAnimator;
+        private ObjectAnimator mAlphaAnimator;
+
+        private boolean mEnableReleaseAnimation = true;
+        private boolean mEnableFocusedAnimation = true;
+        private boolean mEnablePressedAnimation = true;
+
+        private boolean mEnableRippleEffect = true;
+        private boolean mEnableOverlayEffect = true;
+
+        private long mDuration;
+
+        RippleTransitAnimator(RippleDrawable rippleDrawable) {
+            mRipple = new WeakReference<RippleDrawable>(rippleDrawable);
+            mRippleAnimator = ObjectAnimator.ofFloat(getRipple(), "rippleProgress", 1);
+            mOverlayAnimator = ObjectAnimator.ofFloat(getRipple(), "overlayAlpha", 1, 0);
+            mAlphaAnimator = ObjectAnimator.ofFloat(getRipple(), "generalAlpha", 1, 0);
+            mDuration = DEFAULT_DURATION;
+        }
+
+        private RippleDrawable getRipple() {
+            return mRipple.get();
+        }
+
+        public void setDuration(long duration) {
+            mDuration = duration;
+        }
+
+        public void setEnableReleaseAnimation(boolean value) {
+            mEnableReleaseAnimation = value;
+        }
+
+        public void setEnableFocusedAnimation(boolean value) {
+            mEnableFocusedAnimation = value;
+        }
+
+        public void setEnablePressedAnimation(boolean value) {
+            mEnablePressedAnimation = value;
+        }
+
+
+        public void setEnableRippleEffect(boolean enable) {
+            mEnableRippleEffect = enable;
+        }
+
+        public void setEnableOverlayEffect(boolean enable) {
+            mEnableOverlayEffect = enable;
+        }
+
+        public boolean isRunning() {
+            return mRippleAnimator.isRunning() || mOverlayAnimator.isRunning() || mAlphaAnimator.isRunning();
+        }
+
+        public void cancel() {
+            if (mRippleAnimator.isRunning())
+                mRippleAnimator.cancel();
+
+            if (mOverlayAnimator.isRunning())
+                mOverlayAnimator.cancel();
+
+            if (mAlphaAnimator.isRunning())
+                mAlphaAnimator.cancel();
+        }
+
+        @Override
+        public void onPressed() {
+            if (mEnablePressedAnimation) {
+                float current_ripple = 0;
+
+                if (isRunning()) {
+                    cancel();
+                    current_ripple = (Float) mRippleAnimator.getAnimatedValue();
+                }
+
+                RippleDrawable ripple = getRipple();
+                TouchTracker tracker = ripple.getTouchTracker();
+                float x, y;
+                if (tracker != null) {
+                    x = tracker.getLastTouch().x;
+                    y = tracker.getLastTouch().y;
+                } else {
+                    x = ripple.getRippleCenter().x;
+                    y = ripple.getRippleCenter().y;
+                }
+                ripple.setRippleCenter(x, y);
+                ripple.setGeneralAlpha(1);
+                ripple.setEnableRipple(mEnableRippleEffect);
+                ripple.setEnableOverlay(mEnableOverlayEffect);
+                ripple.setOverlayAlpha(1);
+
+                //  Release Animation
+                if (mEnableRippleEffect) {
+                    if (current_ripple < FOCUS_RANGE_LARGE) {
+                        mRippleAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+                    } else {
+                        //  let the larger ripple go, and start another one
+                        current_ripple = 0;
+                        mRippleAnimator.setInterpolator(new DecelerateInterpolator());
+                    }
+                    mRippleAnimator.setDuration(mDuration);
+                    mRippleAnimator.setRepeatCount(0);
+                    mRippleAnimator.setFloatValues(current_ripple, 1);
+                    mRippleAnimator.start();
+                    if (mOverlayAnimator.isRunning()) {
+                        mOverlayAnimator.cancel();
+                    }
+                }
+            }
+
+        }
+
+        @Override
+        public void onReleased() {
+            if (mEnableReleaseAnimation) {
+                mAlphaAnimator.setDuration(mDuration);
+                mAlphaAnimator.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        RippleDrawable ripple = getRipple();
+
+                        ripple.setGeneralAlpha(1);
+                        ripple.setEnableRipple(false);
+                        ripple.setEnableOverlay(false);
+                    }
+                });
+                mAlphaAnimator.start();
+                if (mOverlayAnimator.isRunning()) {
+                    mOverlayAnimator.clone();
+                }
+                mOverlayAnimator.setDuration(mDuration);
+                mOverlayAnimator.setFloatValues(0);
+                mOverlayAnimator.start();
+            }
+        }
+
+        @Override
+        public void onFocused() {
+            if (mEnableFocusedAnimation) {
+                if (isRunning()) {
+                    cancel();
+                }
+
+                RippleDrawable ripple = getRipple();
+                ripple.setRippleCenter(ripple.getBounds().width() / 2, ripple.getBounds().height() / 2);
+                ripple.setGeneralAlpha(1);
+                ripple.setEnableRipple(mEnableRippleEffect);
+                ripple.setEnableOverlay(mEnableOverlayEffect);
+                ripple.setOverlayAlpha(1);
+
+                //  Transit Animation
+                //  Ripple
+                if (mEnableRippleEffect) {
+                    final float begin, end;
+                    begin = FOCUS_RANGE_LARGE;
+                    end = FOCUS_RANGE_SMALL;
+                    mRippleAnimator.setDuration(mDuration);
+                    mRippleAnimator.setFloatValues(0, begin);
+                    mRippleAnimator.setInterpolator(new DecelerateInterpolator());
+                    mRippleAnimator.setRepeatCount(0);
+                    mRippleAnimator.addListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            //  Holding Animation
+                            mRippleAnimator.setDuration(mDuration);
+                            mRippleAnimator.setFloatValues(begin, end);
+                            mRippleAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+                            mRippleAnimator.setRepeatCount(ValueAnimator.INFINITE);
+                            mRippleAnimator.setRepeatMode(ValueAnimator.REVERSE);
+                            mRippleAnimator.start();
+                            //  remove this listener
+                            mRippleAnimator.removeListener(this);
+                        }
+                    });
+                    mRippleAnimator.start();
+                }
+            }
+
         }
     }
 }

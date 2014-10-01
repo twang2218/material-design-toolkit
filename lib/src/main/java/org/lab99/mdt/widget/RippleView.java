@@ -2,7 +2,6 @@ package org.lab99.mdt.widget;
 
 
 import android.annotation.SuppressLint;
-import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.view.View;
 
@@ -40,10 +39,4 @@ public class RippleView extends View {
         mView.setOnClickListener(delayed_listener);
     }
 
-//    delegate
-
-    @Override
-    public void setBackground(Drawable background) {
-        mAnimation.setDrawable(background);
-    }
 }
