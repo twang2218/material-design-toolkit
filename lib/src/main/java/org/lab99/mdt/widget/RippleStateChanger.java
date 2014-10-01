@@ -12,8 +12,8 @@ import java.lang.ref.WeakReference;
 
 
 class RippleStateChanger extends StateChanger {
-    private final static float FOCUS_RANGE_LARGE = 0.30f;
-    private final static float FOCUS_RANGE_SMALL = 0.25f;
+    private final static float FOCUS_RANGE_LARGE = 0.7f;
+    private final static float FOCUS_RANGE_SMALL = 0.5f;
 
     private WeakReference<RippleDrawable> mRipple;
     private ObjectAnimator mRippleAnimator;
@@ -56,11 +56,8 @@ class RippleStateChanger extends StateChanger {
 
     @Override
     public void onPressed() {
-        float current_ripple = 0;
-
         if (isRunning()) {
             cancel();
-            current_ripple = (Float) mRippleAnimator.getAnimatedValue();
         }
 
         RippleDrawable ripple = getRipple();
@@ -82,16 +79,10 @@ class RippleStateChanger extends StateChanger {
         if (getEnablePressedAnimation()) {
             //  Release Animation
             if (mEnableRippleEffect) {
-                if (current_ripple < FOCUS_RANGE_LARGE) {
-                    mRippleAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-                } else {
-                    //  let the larger ripple go, and start another one
-                    current_ripple = 0;
-                    mRippleAnimator.setInterpolator(new DecelerateInterpolator());
-                }
+                mRippleAnimator.setInterpolator(new DecelerateInterpolator());
                 mRippleAnimator.setDuration(mDuration);
                 mRippleAnimator.setRepeatCount(0);
-                mRippleAnimator.setFloatValues(current_ripple, 1);
+                mRippleAnimator.setFloatValues(0, 1);
                 mRippleAnimator.start();
                 if (mOverlayAnimator.isRunning()) {
                     mOverlayAnimator.cancel();
@@ -153,7 +144,7 @@ class RippleStateChanger extends StateChanger {
                 final float begin, end;
                 begin = FOCUS_RANGE_LARGE;
                 end = FOCUS_RANGE_SMALL;
-                mRippleAnimator.setDuration(mDuration);
+                mRippleAnimator.setDuration(mDuration * 2);
                 mRippleAnimator.setFloatValues(0, begin);
                 mRippleAnimator.setInterpolator(new DecelerateInterpolator());
                 mRippleAnimator.setRepeatCount(0);
@@ -161,7 +152,7 @@ class RippleStateChanger extends StateChanger {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         //  Holding Animation
-                        mRippleAnimator.setDuration(mDuration);
+                        mRippleAnimator.setDuration(mDuration * 4);
                         mRippleAnimator.setFloatValues(begin, end);
                         mRippleAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
                         mRippleAnimator.setRepeatCount(ValueAnimator.INFINITE);

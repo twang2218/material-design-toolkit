@@ -1,12 +1,10 @@
 package org.lab99.mdt.widget;
 
-import android.annotation.TargetApi;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
+import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.support.annotation.NonNull;
 
 import org.lab99.mdt.utils.DrawableCompat;
 
@@ -19,14 +17,16 @@ public class ProxyDrawable extends Drawable implements Drawable.Callback {
     private ProxyState mState;
 
 
-    public ProxyDrawable(@NonNull Drawable original) {
+    public ProxyDrawable(Drawable original) {
         this(original, null);
     }
 
-    ProxyDrawable(@NonNull Drawable original, ProxyState state) {
+    ProxyDrawable(Drawable original, ProxyState state) {
         this(state, null);
         mState.setOriginal(original);
-        super.setBounds(original.getBounds());
+        if (original != null && !original.getBounds().isEmpty()) {
+            super.setBounds(original.getBounds());
+        }
     }
 
     ProxyDrawable(ProxyState state, Resources res) {
@@ -37,74 +37,84 @@ public class ProxyDrawable extends Drawable implements Drawable.Callback {
 
     @Override
     public void draw(Canvas canvas) {
-        getOriginal().draw(canvas);
+        if (getOriginal() != null)
+            getOriginal().draw(canvas);
     }
 
     @Override
     public void setColorFilter(ColorFilter cf) {
-        getOriginal().setColorFilter(cf);
+        if (getOriginal() != null)
+            getOriginal().setColorFilter(cf);
     }
 
     @Override
     public int getOpacity() {
-        return getOriginal().getOpacity();
+        if (getOriginal() != null)
+            return getOriginal().getOpacity();
+        else
+            return PixelFormat.TRANSPARENT;
     }
 
     @Override
     public void setBounds(int left, int top, int right, int bottom) {
-        getOriginal().setBounds(left, top, right, bottom);
-        super.setBounds(left, top, right, bottom);
-    }
+        if (getOriginal() != null)
+            getOriginal().setBounds(left, top, right, bottom);
 
-    @TargetApi(Build.VERSION_CODES.KITKAT)
-    @Override
-    public int getAlpha() {
-        return getOriginal().getAlpha();
+        super.setBounds(left, top, right, bottom);
     }
 
     @Override
     public void setAlpha(int alpha) {
-        getOriginal().setAlpha(alpha);
+        if (getOriginal() != null)
+            getOriginal().setAlpha(alpha);
     }
 
     @Override
     public void invalidateSelf() {
-        getOriginal().invalidateSelf();
+        if (getOriginal() != null)
+            getOriginal().invalidateSelf();
     }
 
     @Override
     public boolean isStateful() {
-        return getOriginal().isStateful();
+        return getOriginal() != null && getOriginal().isStateful();
     }
 
     @Override
     public boolean setState(int[] stateSet) {
-        return getOriginal().setState(stateSet);
-    }
-
-    @Override
-    public int[] getState() {
-        return getOriginal().getState();
+        return getOriginal() != null && getOriginal().setState(stateSet) && super.setState(stateSet);
     }
 
     @Override
     public int getIntrinsicWidth() {
-        return getOriginal().getIntrinsicWidth();
+        if (getOriginal() != null)
+            return getOriginal().getIntrinsicWidth();
+        else
+            return super.getIntrinsicWidth();
     }
 
     @Override
     public int getIntrinsicHeight() {
-        return getOriginal().getIntrinsicHeight();
+        if (getOriginal() != null)
+            return getOriginal().getIntrinsicHeight();
+        else
+            return super.getIntrinsicHeight();
     }
 
     @Override
     public int getMinimumWidth() {
-        return getOriginal().getMinimumWidth();
+        if (getOriginal() != null)
+            return getOriginal().getMinimumWidth();
+        else
+            return super.getMinimumWidth();
     }
 
     @Override
     public int getMinimumHeight() {
-        return getOriginal().getMinimumHeight();
+        if (getOriginal() != null)
+            return getOriginal().getMinimumHeight();
+        else
+            return super.getMinimumHeight();
     }
 
     @Override
@@ -142,15 +152,10 @@ public class ProxyDrawable extends Drawable implements Drawable.Callback {
 
     public Drawable getOriginal() {
         ProxyState state = (ProxyState) getConstantState();
-        if (state.getOriginal() != null) {
-            return state.getOriginal();
-        } else {
-            return null;
-        }
-
+        return state.getOriginal();
     }
 
-    public void setOriginal(@NonNull Drawable drawable) {
+    public void setOriginal(Drawable drawable) {
         ProxyState state = (ProxyState) getConstantState();
         if (state.getOriginal() != null) {
             state.setOriginal(drawable);

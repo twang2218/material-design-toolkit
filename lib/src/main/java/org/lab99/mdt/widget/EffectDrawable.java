@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
 import android.view.View;
 
 import org.lab99.mdt.utils.ViewCompat;
@@ -16,11 +15,11 @@ public class EffectDrawable extends ProxyDrawable implements Drawable.Callback {
     //  2 - Ripple
     //  3 - Child Shadow
 
-    public EffectDrawable(@NonNull Drawable original) {
+    public EffectDrawable(Drawable original) {
         this(original, null);
     }
 
-    EffectDrawable(@NonNull Drawable original, EffectState state) {
+    EffectDrawable(Drawable original, EffectState state) {
         super(original, state);
     }
 
@@ -28,10 +27,31 @@ public class EffectDrawable extends ProxyDrawable implements Drawable.Callback {
         super(state, res);
     }
 
-    public static void apply(View view) {
-        EffectDrawable background = new EffectDrawable(view.getBackground());
-        ViewCompat.setViewBackground(view, background);
-        view.setOnTouchListener(background.getTouchTracker());
+    public static EffectDrawable apply(View view) {
+        return apply(view, view);
+    }
+
+    /**
+     * @param touch_view  touch view will trigger the state change event;
+     * @param ripple_view the ripple view has to be able to receive 'onTouch' event
+     * @return
+     */
+    public static EffectDrawable apply(View touch_view, View ripple_view) {
+        //  create new warp drawable for the old drawable
+        EffectDrawable background = new EffectDrawable(ripple_view.getBackground());
+        ViewCompat.setBackground(ripple_view, background);
+        //  attach touch tracker
+        ripple_view.setOnTouchListener(background.getTouchTracker());
+
+        if (touch_view != ripple_view) {
+            //  link the messenger for passing state message to 'background'
+            MessengerDrawable messenger = new MessengerDrawable(touch_view.getBackground(), background);
+            ViewCompat.setBackground(touch_view, messenger);
+            //  force ripple_view not 'clickable', so it will not trigger the state change event.
+            ripple_view.setClickable(false);
+        }
+
+        return background;
     }
 
     @Override
@@ -95,12 +115,6 @@ public class EffectDrawable extends ProxyDrawable implements Drawable.Callback {
         EffectState(EffectState orig, Callback callback, Resources res) {
             super(orig, callback, res);
 
-            mRipple.setMaskDrawer(new Drawer() {
-                @Override
-                public void draw(Canvas canvas) {
-                    getOriginal().draw(canvas);
-                }
-            });
         }
 
         @Override
@@ -148,6 +162,23 @@ public class EffectDrawable extends ProxyDrawable implements Drawable.Callback {
                     || who == getRipple()
                     || who == getShadowSelf()
                     || who == getShadowChild();
+        }
+
+        @Override
+        public void setOriginal(Drawable original) {
+            super.setOriginal(original);
+            if (original != null) {
+                mRipple.setMaskDrawer(new Drawer() {
+                    @Override
+                    public void draw(Canvas canvas) {
+                        if (getOriginal() != null) {
+                            getOriginal().draw(canvas);
+                        }
+                    }
+                });
+            } else {
+                mRipple.setMaskDrawer(null);
+            }
         }
 
         public Drawable getShadowSelf() {

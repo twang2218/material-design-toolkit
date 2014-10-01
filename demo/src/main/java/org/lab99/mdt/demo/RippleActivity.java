@@ -5,8 +5,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 
 import org.lab99.mdt.widget.EffectDrawable;
-import org.lab99.mdt.widget.RippleAnimation;
-import org.lab99.mdt.widget.RippleView;
 
 
 public class RippleActivity extends ActionBarActivity {
@@ -24,11 +22,11 @@ public class RippleActivity extends ActionBarActivity {
         //new RippleView(text);
         EffectDrawable.apply(text);
 //        EffectDrawable background = new EffectDrawable(text.getBackground());
-//        ViewCompat.setViewBackground(text, background);
+//        ViewCompat.setBackground(text, background);
 //        text.setOnTouchListener(background.getTouchTracker());
 
         View textTransparent = findViewById(R.id.text_transparent);
-        new RippleView(textTransparent);
+        EffectDrawable.apply(textTransparent);
 
         View button = findViewById(R.id.button1);
 //        new RippleView(button);
@@ -36,10 +34,14 @@ public class RippleActivity extends ActionBarActivity {
 
         View buttonInside = findViewById(R.id.button_inside);
         View arena = findViewById(R.id.arena);
-        RippleAnimation animator = new RippleAnimation(arena)
-                .setRippleColor(getResources().getColor(R.color.mdt_red_500))
-                .setEnableFocusedAnimation(true);
-        animator.setTouchView(buttonInside);
+
+        EffectDrawable arena_background = EffectDrawable.apply(buttonInside, arena);
+        arena_background.getRipple().setRippleColor(getResources().getColor(R.color.mdt_red_500));
+
+//        RippleAnimation animator = new RippleAnimation(arena)
+//                .setRippleColor(getResources().getColor(R.color.mdt_red_500))
+//                .setEnableFocusedAnimation(true);
+//        animator.setTouchView(buttonInside);
     }
 
 }

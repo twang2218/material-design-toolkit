@@ -9,7 +9,7 @@ import android.view.View;
  */
 public final class ViewCompat extends android.support.v4.view.ViewCompat {
     @SuppressWarnings("deprecation")
-    public static void setViewBackground(View view, Drawable drawable) {
+    public static void setBackground(View view, Drawable drawable) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             view.setBackground(drawable);
         } else {
