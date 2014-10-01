@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/text"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:background="@color/mdt_amber_a200"
         android:focusable="true"
@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/text_transparent"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
         android:layout_toRightOf="@id/text"
@@ -29,18 +29,30 @@
         tools:ignore="RtlHardcoded" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/button1"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/text"
         android:padding="16dp"
         android:text="@string/button" />
 
     <Button
+        android:id="@+id/button2"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text"
+        android:layout_marginLeft="24dp"
+        android:layout_toEndOf="@id/button1"
+        android:layout_toRightOf="@id/button1"
+        android:padding="16dp"
+        android:text="@string/button"
+        tools:ignore="RtlHardcoded" />
+
+    <Button
         android:id="@+id/button_inside"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button"
+        android:layout_below="@id/button1"
         android:padding="16dp"
         android:text="@string/inside_button" />
 
@@ -48,5 +60,5 @@
         android:id="@+id/arena"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/button" />
+        android:layout_below="@id/button1" />
 </RelativeLayout>
