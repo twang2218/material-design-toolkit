@@ -19,7 +19,7 @@ public class ProxyDrawable extends Drawable implements Drawable.Callback {
     private ProxyState mState;
 
 
-    public ProxyDrawable(Drawable original) {
+    public ProxyDrawable(@NonNull Drawable original) {
         this(original, null);
     }
 

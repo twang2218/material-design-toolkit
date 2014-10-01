@@ -105,11 +105,11 @@ public class RippleAnimation {
         mView = view;
         //  Replace the original Drawable with RippleDrawable
         mOriginal = view.getBackground();
-        mRipple = new RippleDrawable(view.getResources());
+        mRipple = new RippleDrawable();
         mRipple.setOverlayColor(view.getResources().getColor(R.color.mdt_button_hover_dark));
         mRipple.setRippleColor(view.getResources().getColor(R.color.mdt_button_pressed_dark));
-        mRipple.setEnableRipple(false);
-        mRipple.setEnableOverlay(false);
+        mRipple.setRippleEnabled(false);
+        mRipple.setOverlayEnabled(false);
         mRipple.setRippleCenter(mView.getWidth() / 2, mView.getHeight() / 2);
         setViewBackground(mRipple);
 
@@ -214,9 +214,9 @@ public class RippleAnimation {
             mAlphaAnimator.addListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    mRipple.setAlpha(1);
-                    mRipple.setEnableRipple(false);
-                    mRipple.setEnableOverlay(false);
+                    mRipple.setAlpha(1f);
+                    mRipple.setRippleEnabled(false);
+                    mRipple.setOverlayEnabled(false);
                 }
             });
             mAlphaAnimator.start();
@@ -236,9 +236,9 @@ public class RippleAnimation {
             }
 
             mRipple.setRippleCenter(mView.getWidth() / 2, mView.getHeight() / 2);
-            mRipple.setAlpha(1);
-            mRipple.setEnableRipple(mEnableRippleEffect);
-            mRipple.setEnableOverlay(mEnableOverlayEffect);
+            mRipple.setAlpha(1f);
+            mRipple.setRippleEnabled(mEnableRippleEffect);
+            mRipple.setOverlayEnabled(mEnableOverlayEffect);
             mRipple.setOverlayAlpha(1);
 
             //  Transit Animation
@@ -279,9 +279,9 @@ public class RippleAnimation {
                 current_ripple = (Float) mRippleAnimator.getAnimatedValue();
             }
 
-            mRipple.setAlpha(1);
-            mRipple.setEnableRipple(mEnableRippleEffect);
-            mRipple.setEnableOverlay(mEnableOverlayEffect);
+            mRipple.setAlpha(1f);
+            mRipple.setRippleEnabled(mEnableRippleEffect);
+            mRipple.setOverlayEnabled(mEnableOverlayEffect);
             mRipple.setOverlayAlpha(1);
 
             //  Release Animation

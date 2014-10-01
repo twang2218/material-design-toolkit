@@ -6,6 +6,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.view.View;
+
+import org.lab99.mdt.utils.ViewCompat;
 
 public class EffectDrawable extends ProxyDrawable implements Drawable.Callback {
     //  0 - Self Shadow
@@ -23,6 +26,12 @@ public class EffectDrawable extends ProxyDrawable implements Drawable.Callback {
 
     EffectDrawable(EffectState state, Resources res) {
         super(state, res);
+    }
+
+    public static void apply(View view) {
+        EffectDrawable background = new EffectDrawable(view.getBackground());
+        ViewCompat.setViewBackground(view, background);
+        view.setOnTouchListener(background.getTouchTracker());
     }
 
     @Override
@@ -86,7 +95,7 @@ public class EffectDrawable extends ProxyDrawable implements Drawable.Callback {
         EffectState(EffectState orig, Callback callback, Resources res) {
             super(orig, callback, res);
 
-            mRipple.setMaskDrawer(new IDrawer() {
+            mRipple.setMaskDrawer(new Drawer() {
                 @Override
                 public void draw(Canvas canvas) {
                     getOriginal().draw(canvas);
@@ -117,7 +126,7 @@ public class EffectDrawable extends ProxyDrawable implements Drawable.Callback {
         @Override
         protected void initWithoutState(Resources res) {
             super.initWithoutState(res);
-            mRipple = new RippleDrawable(res);
+            mRipple = new RippleDrawable();
             //  TODO: to be remove
             mShadowSelf = new ColorDrawable(Color.TRANSPARENT);
             mShadowChild = new ColorDrawable(Color.TRANSPARENT);
