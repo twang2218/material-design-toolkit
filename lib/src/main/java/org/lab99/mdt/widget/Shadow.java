@@ -43,7 +43,7 @@ public class Shadow {
     protected BackgroundDrawer mBackgroundDrawer = null;
     //  variables
     private View mView;
-    private Paint mShadowPaint = new Paint(Paint.FILTER_BITMAP_FLAG);
+    private Paint mShadowPaint = new Paint(Paint.FILTER_BITMAP_FLAG | Paint.ANTI_ALIAS_FLAG);
     private float mShadowOffset;
     private float mShadowBlurRadius;
     private Bitmap mBitmapShadow;
@@ -55,7 +55,11 @@ public class Shadow {
     public Shadow(View view, BackgroundDrawer drawer) {
         mView = view;
         mBackgroundDrawer = drawer;
-        mRenderScript = RenderScript.create(mView.getContext());
+        try {
+            mRenderScript = RenderScript.create(mView.getContext());
+        } catch (Error ex) {
+            ex.printStackTrace();
+        }
     }
 
     public void destroy() {
@@ -138,12 +142,14 @@ public class Shadow {
             cs.drawColor(Color.BLACK, PorterDuff.Mode.SRC_ATOP);
 
             //  make it blur (RenderScript)
-            mAllocationShadow.copyFrom(mBitmapShadow);
-            mBlurFilter.setInput(mAllocationShadow);
-            mBlurFilter.setRadius(mShadowBlurRadius / mShadowScaleX);
-            mBlurFilter.forEach(mAllocationShadow);
-            mAllocationShadow.copyTo(mBitmapShadow);
-
+            //  In EditMode, just draw the scaled background to show the idea, since RS is not supported in IDE.
+            if (mRenderScript != null) {
+                mAllocationShadow.copyFrom(mBitmapShadow);
+                mBlurFilter.setInput(mAllocationShadow);
+                mBlurFilter.setRadius(mShadowBlurRadius / mShadowScaleX);
+                mBlurFilter.forEach(mAllocationShadow);
+                mAllocationShadow.copyTo(mBitmapShadow);
+            }
             //      calculate offset, handling rotation;
             double rotation_alpha = Math.toRadians(getRotation());
             float x = (float) Math.sin(rotation_alpha) * mShadowOffset;
@@ -221,8 +227,10 @@ public class Shadow {
                 } else {
                     //  create the new
                     mBitmapShadow = Bitmap.createBitmap(scaled_width, scaled_height, Bitmap.Config.ARGB_8888);
-                    mAllocationShadow = Allocation.createFromBitmap(mRenderScript, mBitmapShadow);
-                    mBlurFilter = ScriptIntrinsicBlur.create(mRenderScript, mAllocationShadow.getElement());
+                    if (mRenderScript != null) {
+                        mAllocationShadow = Allocation.createFromBitmap(mRenderScript, mBitmapShadow);
+                        mBlurFilter = ScriptIntrinsicBlur.create(mRenderScript, mAllocationShadow.getElement());
+                    }
                     //  save to cache
                     mCache.put(size, new Data(mBitmapShadow, mAllocationShadow, mBlurFilter));
                 }

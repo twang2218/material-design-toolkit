@@ -6,6 +6,24 @@ Material Design Toolkit
 
 Implementation of some building blocks of Material Design
 
+Usage
+------
+
+### RenderScript
+
+To use RenderScript, these 2 lines should be added to your project gradle file:
+
+```groovy
+android {
+    ...
+    defaultConfig {
+        ...
+        renderscriptTargetApi 19
+        renderscriptSupportMode true
+    }
+}
+```
+
 Widgets
 -------
 

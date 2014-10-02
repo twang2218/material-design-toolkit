@@ -121,10 +121,7 @@ public class RoundButton extends View implements Shadow.BackgroundDrawer {
     @Override
     protected void onDraw(Canvas canvas) {
         //  draw shadow
-        if (!isInEditMode()) {
-            //  cannot use RenderScript in EditMode.
-            mShadow.draw(canvas);
-        }
+        mShadow.draw(canvas);
 
         //  draw background
         drawBackground(canvas);
@@ -136,12 +133,10 @@ public class RoundButton extends View implements Shadow.BackgroundDrawer {
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        if (!isInEditMode()) {
-            mShadow = new Shadow(this, this);
-            mShadow.setRotation(mViewCompat.getRotation(this));
-            mShadow.setDepth(mDepth);
-            mShadowAnimator = ObjectAnimator.ofFloat(mShadow, "depth", getDepth() + 1);
-        }
+        mShadow = new Shadow(this, this);
+        mShadow.setRotation(mViewCompat.getRotation(this));
+        mShadow.setDepth(mDepth);
+        mShadowAnimator = ObjectAnimator.ofFloat(mShadow, "depth", getDepth() + 1);
     }
 
     @Override
