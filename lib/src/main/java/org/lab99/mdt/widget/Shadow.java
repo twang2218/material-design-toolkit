@@ -14,7 +14,7 @@ import android.view.View;
 
 import org.lab99.mdt.utils.Utils;
 
-public class Shadow {
+class Shadow {
     //  Offset function calculate from offset set {1.5, 3, 10, 14, 19}
     //  Material Design Guideline > Layout > Dimensionality > Shadows
     //  offset(depth) = 0.57 * depth^2 + 0.91 * depth;

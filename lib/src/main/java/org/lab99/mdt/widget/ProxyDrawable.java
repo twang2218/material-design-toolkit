@@ -16,7 +16,7 @@ import java.lang.ref.WeakReference;
 /**
  * A drawable will act as a proxy
  */
-public class ProxyDrawable extends Drawable implements Drawable.Callback {
+class ProxyDrawable extends Drawable implements Drawable.Callback {
     private ProxyState mState;
 
 
