@@ -1,10 +1,13 @@
 package org.lab99.mdt.widget;
 
+import android.annotation.TargetApi;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.PixelFormat;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 
 import org.lab99.mdt.utils.DrawableCompat;
 
@@ -55,18 +58,27 @@ public class ProxyDrawable extends Drawable implements Drawable.Callback {
             return PixelFormat.TRANSPARENT;
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
-    public void setBounds(int left, int top, int right, int bottom) {
+    public int getAlpha() {
         if (getOriginal() != null)
-            getOriginal().setBounds(left, top, right, bottom);
-
-        super.setBounds(left, top, right, bottom);
+            return getOriginal().getAlpha();
+        else
+            return super.getAlpha();
     }
 
     @Override
     public void setAlpha(int alpha) {
         if (getOriginal() != null)
             getOriginal().setAlpha(alpha);
+    }
+
+    @Override
+    public boolean setVisible(boolean visible, boolean restart) {
+        if (getOriginal() != null)
+            return getOriginal().setVisible(visible, restart);
+        else
+            return super.setVisible(visible, restart);
     }
 
     @Override
@@ -81,8 +93,20 @@ public class ProxyDrawable extends Drawable implements Drawable.Callback {
     }
 
     @Override
-    public boolean setState(int[] stateSet) {
-        return getOriginal() != null && getOriginal().setState(stateSet) && super.setState(stateSet);
+    protected boolean onStateChange(int[] state) {
+        if (getOriginal() != null) {
+            boolean changed = getOriginal().setState(state);
+            onBoundsChange(getBounds());
+            return changed;
+        } else {
+            return super.onStateChange(state);
+        }
+    }
+
+    @Override
+    protected void onBoundsChange(Rect bounds) {
+        if (getOriginal() != null)
+            getOriginal().setBounds(bounds);
     }
 
     @Override
