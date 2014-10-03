@@ -170,6 +170,10 @@ class RippleStateChanger extends StateChanger {
 
     }
 
+    public void setDuration(long duration) {
+        mDuration = duration;
+    }
+
     public void setEnableRippleEffect(boolean enable) {
         mEnableRippleEffect = enable;
     }

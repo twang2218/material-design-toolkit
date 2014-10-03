@@ -24,6 +24,7 @@ public final class Utils {
         sWindowManger = (WindowManager) sContext.getSystemService(Context.WINDOW_SERVICE);
     }
 
+    @SuppressWarnings("deprecation")
     public static Point getScreenSize() {
         Display display = sWindowManger.getDefaultDisplay();
         Point size = new Point();

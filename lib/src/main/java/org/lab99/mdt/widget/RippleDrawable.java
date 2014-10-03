@@ -199,10 +199,17 @@ public class RippleDrawable extends Drawable {
 
     @Override
     public boolean setState(int[] stateSet) {
+        boolean changed = false;
         if (getOnStateChangedListener() != null) {
-            getOnStateChangedListener().onStateChange(getState(), stateSet);
+            changed = getOnStateChangedListener().onStateChange(getState(), stateSet);
         }
-        return super.setState(stateSet);
+
+        return super.setState(stateSet) || changed;
+    }
+
+    @Override
+    public ConstantState getConstantState() {
+        return mState;
     }
 
     private float calculateMaxRadius() {
@@ -288,7 +295,7 @@ public class RippleDrawable extends Drawable {
             mOverlayEnabled = orig.mOverlayEnabled;
             mOverlayAlpha = orig.mOverlayAlpha;
             mOverlayColor = orig.mOverlayColor;
-            mOverlayPaint = new Paint(mOverlayPaint);
+            mOverlayPaint = new Paint(orig.mOverlayPaint);
             //  Handler
             mMaskDrawer = orig.mMaskDrawer;
             mTouchTracker = orig.mTouchTracker;

@@ -225,7 +225,7 @@ class ProxyDrawable extends Drawable implements Drawable.Callback {
         }
 
         public void setOriginal(Drawable original) {
-            mOriginal = prepare(mOriginal, original);
+            mOriginal = prepareCallback(mOriginal, original);
         }
 
         protected Callback getCallback() {
@@ -251,7 +251,11 @@ class ProxyDrawable extends Drawable implements Drawable.Callback {
             return who == getOriginal();
         }
 
-        protected Drawable prepare(Drawable src, Drawable target) {
+        protected Drawable prepareCallback(Drawable src, Drawable target) {
+            if (src == target) {
+                return target;
+            }
+
             //  remove original drawable callback
             if (src != null) {
                 src.setCallback(null);

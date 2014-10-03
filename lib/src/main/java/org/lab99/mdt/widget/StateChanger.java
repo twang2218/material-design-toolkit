@@ -12,12 +12,9 @@ public abstract class StateChanger implements OnStateChangedListener {
 
 
     @Override
-    public void onStateChange(int[] prev_states, int[] next_states) {
+    public boolean onStateChange(int[] prev_states, int[] next_states) {
         boolean prev_pressed = contains(prev_states, android.R.attr.state_pressed);
         boolean next_pressed = contains(next_states, android.R.attr.state_pressed);
-        boolean prev_focused = contains(prev_states, android.R.attr.state_focused);
-        boolean next_focused = contains(next_states, android.R.attr.state_focused);
-
         if (prev_pressed != next_pressed) {
             //  pressed status changed
             if (next_pressed) {
@@ -25,7 +22,11 @@ public abstract class StateChanger implements OnStateChangedListener {
             } else {
                 onReleased();
             }
+            return true;
         }
+
+        boolean prev_focused = contains(prev_states, android.R.attr.state_focused);
+        boolean next_focused = contains(next_states, android.R.attr.state_focused);
         if (prev_focused != next_focused) {
             //  focused status changed
             if (next_focused) {
@@ -33,8 +34,10 @@ public abstract class StateChanger implements OnStateChangedListener {
             } else {
                 onReleased();
             }
+            return true;
         }
 
+        return false;
     }
 
     //  abstract
