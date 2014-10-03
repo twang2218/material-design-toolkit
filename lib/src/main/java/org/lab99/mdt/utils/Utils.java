@@ -3,19 +3,29 @@ package org.lab99.mdt.utils;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Point;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Display;
-import android.view.View;
 import android.view.WindowManager;
 
 public final class Utils {
+    private static Context sContext;
+    private static DisplayMetrics sMetrics;
+    private static WindowManager sWindowManger;
 
-    @SuppressWarnings("deprecation")
-    public static Point getScreenSize(Context context) {
-        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        Display display = windowManager.getDefaultDisplay();
+    static {
+        sMetrics = Resources.getSystem().getDisplayMetrics();
+    }
+
+    public static void init(Context context) {
+        sContext = context;
+        sMetrics = sContext.getResources().getDisplayMetrics();
+        sWindowManger = (WindowManager) sContext.getSystemService(Context.WINDOW_SERVICE);
+    }
+
+    public static Point getScreenSize() {
+        Display display = sWindowManger.getDefaultDisplay();
         Point size = new Point();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             display.getSize(size);
@@ -26,17 +36,31 @@ public final class Utils {
         return size;
     }
 
-    @SuppressWarnings("deprecation")
-    public static void setBackground(View view, Drawable drawable) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            view.setBackground(drawable);
+    public static Point getScreenSize(Context context) {
+        if (context != sContext) {
+            init(context);
+        }
+
+        return getScreenSize();
+    }
+
+    public static float getPixelFromDip(float dip) {
+        if (sMetrics != null && sMetrics.density > 0) {
+            return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dip, sMetrics);
         } else {
-            view.setBackgroundDrawable(drawable);
+            //  On some devices which 'ro.sf.lcd_density' is missing, then 'sMetrics' is invalid.
+            //  In such case, just assume it's 'xhdpi', better then nothing or exception.
+            DisplayMetrics metrics = new DisplayMetrics();
+            metrics.density = 2;
+            return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dip, metrics);
         }
     }
 
     public static float getPixelFromDip(Context context, float dip) {
-        Resources r = context.getResources();
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dip, r.getDisplayMetrics());
+        if (context != sContext) {
+            init(context);
+        }
+
+        return getPixelFromDip(dip);
     }
 }
