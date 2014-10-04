@@ -12,6 +12,7 @@ class ShadowStateChanger extends StateChanger {
 
     private WeakReference<ShadowDrawable> mShadow;
     private ObjectAnimator mShadowAnimator;
+    private float mPreDepth;
 
     ShadowStateChanger(ShadowDrawable shadowDrawable) {
         mShadow = new WeakReference<ShadowDrawable>(shadowDrawable);
@@ -27,9 +28,11 @@ class ShadowStateChanger extends StateChanger {
     public void onPressed() {
         if (isRunning()) {
             cancel();
+        } else {
+            mPreDepth = getShadow().getDepth();
         }
 
-        mShadowAnimator.setFloatValues(getShadow().getDepth() + TOUCH_LIFT_DEPTH);
+        mShadowAnimator.setFloatValues(mPreDepth + TOUCH_LIFT_DEPTH);
         mShadowAnimator.start();
     }
 
@@ -39,7 +42,7 @@ class ShadowStateChanger extends StateChanger {
             cancel();
         }
 
-        mShadowAnimator.setFloatValues(getShadow().getDepth());
+        mShadowAnimator.setFloatValues(mPreDepth);
         mShadowAnimator.start();
     }
 

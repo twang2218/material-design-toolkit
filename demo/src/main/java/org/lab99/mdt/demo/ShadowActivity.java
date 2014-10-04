@@ -14,13 +14,10 @@ public class ShadowActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shadow);
 
-        View button1 = findViewById(R.id.bg1);
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EffectDrawable background = EffectDrawable.apply(v);
-                background.getShadowSelf().setDepth(2);
-            }
-        });
+        View bg1 = findViewById(R.id.bg1);
+        EffectDrawable background = EffectDrawable.apply(bg1);
+        if (background.getShadowSelf().getDepth() == 0) {
+            background.getShadowSelf().setDepth(1);
+        }
     }
 }

@@ -88,6 +88,7 @@ public class EffectDrawable extends ProxyDrawable implements Drawable.Callback {
 
     @Override
     protected void onBoundsChange(Rect bounds) {
+        super.onBoundsChange(bounds);
         getShadowSelf().setBounds(bounds);
         getRipple().setBounds(bounds);
     }
