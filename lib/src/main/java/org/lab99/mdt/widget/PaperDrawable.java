@@ -11,21 +11,21 @@ import android.view.View;
 
 import org.lab99.mdt.utils.ViewCompat;
 
-public class EffectDrawable extends ProxyDrawable implements Drawable.Callback {
-    public EffectDrawable(Drawable original, Context context) {
+public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
+    public PaperDrawable(Drawable original, Context context) {
         this(original, null, context);
     }
 
-    EffectDrawable(Drawable original, EffectState state, Context context) {
+    PaperDrawable(Drawable original, PaperState state, Context context) {
         super(original, state);
-        ((EffectState) getConstantState()).setContext(context);
+        ((PaperState) getConstantState()).setContext(context);
     }
 
-    EffectDrawable(EffectState state, Resources res) {
+    PaperDrawable(PaperState state, Resources res) {
         super(state, res);
     }
 
-    public static EffectDrawable apply(View view) {
+    public static PaperDrawable apply(View view) {
         return apply(view, view);
     }
 
@@ -34,15 +34,15 @@ public class EffectDrawable extends ProxyDrawable implements Drawable.Callback {
      * @param ripple_view the ripple view has to be able to receive 'onTouch' event
      * @return
      */
-    public static EffectDrawable apply(View touch_view, View ripple_view) {
+    public static PaperDrawable apply(View touch_view, View ripple_view) {
         Drawable original = touch_view.getBackground();
 
-        if (original instanceof EffectDrawable) {
-            //  don't swap the background if it's already EffectDrawable already.
-            return (EffectDrawable) original;
+        if (original instanceof PaperDrawable) {
+            //  don't swap the background if it's already PaperDrawable already.
+            return (PaperDrawable) original;
         } else {
             //  create new warp drawable for the old drawable
-            EffectDrawable background = new EffectDrawable(ripple_view.getBackground(), touch_view.getContext());
+            PaperDrawable background = new PaperDrawable(ripple_view.getBackground(), touch_view.getContext());
             ViewCompat.setBackground(ripple_view, background);
             //  attach touch tracker
             ripple_view.setOnTouchListener(background.getTouchTracker());
@@ -60,7 +60,7 @@ public class EffectDrawable extends ProxyDrawable implements Drawable.Callback {
 
     @Override
     protected ProxyState createConstantState(ProxyState orig, Callback callback, Resources res) {
-        return new EffectState((EffectState) orig, callback, res);
+        return new PaperState((PaperState) orig, callback, res);
     }
 
     @Override
@@ -94,22 +94,22 @@ public class EffectDrawable extends ProxyDrawable implements Drawable.Callback {
     }
 
     public ShadowDrawable getShadowSelf() {
-        return ((EffectState) getConstantState()).mShadowSelf;
+        return ((PaperState) getConstantState()).mShadowSelf;
     }
 
     public RippleDrawable getRipple() {
-        return ((EffectState) getConstantState()).mRipple;
+        return ((PaperState) getConstantState()).mRipple;
     }
 
     public Drawable getShadowChild() {
-        return ((EffectState) getConstantState()).mShadowChildren;
+        return ((PaperState) getConstantState()).mShadowChildren;
     }
 
     public TouchTracker getTouchTracker() {
-        return ((EffectState) getConstantState()).mTouchTracker;
+        return ((PaperState) getConstantState()).mTouchTracker;
     }
 
-    static class EffectState extends ProxyState {
+    static class PaperState extends ProxyState {
         //  0 - Self Shadow
         //  1 - Original Background
         //  2 - Ripple
@@ -121,19 +121,19 @@ public class EffectDrawable extends ProxyDrawable implements Drawable.Callback {
         TouchTracker mTouchTracker;
         Context mContext;
 
-        EffectState(EffectState orig, Callback callback, Resources res) {
+        PaperState(PaperState orig, Callback callback, Resources res) {
             super(orig, callback, res);
         }
 
         @Override
         public Drawable newDrawable() {
-            return new EffectDrawable(this, null);
+            return new PaperDrawable(this, null);
         }
 
         @Override
         protected void initWithState(ProxyState orig, Resources res) {
             super.initWithState(orig, res);
-            EffectState state = (EffectState) orig;
+            PaperState state = (PaperState) orig;
             mShadowSelf = (ShadowDrawable) state.mShadowSelf.getConstantState().newDrawable(res);
             mRipple = (RippleDrawable) state.mRipple.getConstantState().newDrawable(res);
             mShadowChildren = state.mShadowChildren.getConstantState().newDrawable(res);

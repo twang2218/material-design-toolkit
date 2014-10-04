@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 
-import org.lab99.mdt.widget.EffectDrawable;
+import org.lab99.mdt.widget.PaperDrawable;
 
 
 public class ShadowActivity extends ActionBarActivity {
@@ -15,7 +15,7 @@ public class ShadowActivity extends ActionBarActivity {
         setContentView(R.layout.activity_shadow);
 
         View bg1 = findViewById(R.id.bg1);
-        EffectDrawable background = EffectDrawable.apply(bg1);
+        PaperDrawable background = PaperDrawable.apply(bg1);
         if (background.getShadowSelf().getDepth() == 0) {
             background.getShadowSelf().setDepth(1);
         }
