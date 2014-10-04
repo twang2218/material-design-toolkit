@@ -5,36 +5,38 @@ package org.lab99.mdt.widget;
  */
 public abstract class StateChanger implements OnStateChangedListener {
     protected final static long DEFAULT_DURATION = 300;
-    protected long mDuration;
+    private long mDuration = DEFAULT_DURATION;
+    private boolean mEnabled = true;
     private boolean mEnableReleaseAnimation = true;
     private boolean mEnableFocusedAnimation = true;
     private boolean mEnablePressedAnimation = true;
 
-
     @Override
     public boolean onStateChange(int[] prev_states, int[] next_states) {
-        boolean prev_pressed = contains(prev_states, android.R.attr.state_pressed);
-        boolean next_pressed = contains(next_states, android.R.attr.state_pressed);
-        if (prev_pressed != next_pressed) {
-            //  pressed status changed
-            if (next_pressed) {
-                onPressed();
-            } else {
-                onReleased();
+        if (mEnabled) {
+            boolean prev_pressed = contains(prev_states, android.R.attr.state_pressed);
+            boolean next_pressed = contains(next_states, android.R.attr.state_pressed);
+            if (prev_pressed != next_pressed) {
+                //  pressed status changed
+                if (next_pressed) {
+                    onPressed();
+                } else {
+                    onReleased();
+                }
+                return true;
             }
-            return true;
-        }
 
-        boolean prev_focused = contains(prev_states, android.R.attr.state_focused);
-        boolean next_focused = contains(next_states, android.R.attr.state_focused);
-        if (prev_focused != next_focused) {
-            //  focused status changed
-            if (next_focused) {
-                onFocused();
-            } else {
-                onReleased();
+            boolean prev_focused = contains(prev_states, android.R.attr.state_focused);
+            boolean next_focused = contains(next_states, android.R.attr.state_focused);
+            if (prev_focused != next_focused) {
+                //  focused status changed
+                if (next_focused) {
+                    onFocused();
+                } else {
+                    onReleased();
+                }
+                return true;
             }
-            return true;
         }
 
         return false;
@@ -50,6 +52,16 @@ public abstract class StateChanger implements OnStateChangedListener {
 
     @Override
     public abstract void onFocused();
+
+    @Override
+    public boolean isEnabled() {
+        return mEnabled;
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        mEnabled = enabled;
+    }
 
     public abstract boolean isRunning();
 

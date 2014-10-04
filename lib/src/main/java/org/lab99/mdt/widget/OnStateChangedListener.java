@@ -8,4 +8,8 @@ public interface OnStateChangedListener {
     public void onReleased();
 
     public void onFocused();
+
+    public boolean isEnabled();
+
+    public void setEnabled(boolean enabled);
 }

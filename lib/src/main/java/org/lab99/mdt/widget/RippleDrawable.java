@@ -56,6 +56,15 @@ public class RippleDrawable extends Drawable {
         return mState.mRippleProgress * (mMaxRadius - mMinRadius) + mMinRadius;
     }
 
+    public boolean isEnabled() {
+        return mState.mEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        mState.mEnabled = enabled;
+        invalidateSelf();
+    }
+
     public float getOverlayAlpha() {
         return mState.mOverlayAlpha;
     }
@@ -85,10 +94,18 @@ public class RippleDrawable extends Drawable {
         return this;
     }
 
+    public int getRippleColor() {
+        return mState.mRippleColor;
+    }
+
     public RippleDrawable setRippleColor(int color) {
         mState.mRippleColor = color;
         invalidateSelf();
         return this;
+    }
+
+    public int getOverlayColor() {
+        return mState.mOverlayColor;
     }
 
     public RippleDrawable setOverlayColor(int color) {
@@ -98,13 +115,21 @@ public class RippleDrawable extends Drawable {
         return this;
     }
 
-    public RippleDrawable setRippleEnabled(boolean value) {
+    boolean isRippleEnabled() {
+        return mState.mRippleEnabled;
+    }
+
+    RippleDrawable setRippleEnabled(boolean value) {
         mState.mRippleEnabled = value;
         invalidateSelf();
         return this;
     }
 
-    public RippleDrawable setOverlayEnabled(boolean value) {
+    boolean isOverlayEnabled() {
+        return mState.mOverlayEnabled;
+    }
+
+    RippleDrawable setOverlayEnabled(boolean value) {
         mState.mOverlayEnabled = value;
         invalidateSelf();
         return this;
@@ -138,7 +163,7 @@ public class RippleDrawable extends Drawable {
 
     @Override
     public void draw(Canvas canvas) {
-        if (!getBounds().isEmpty()) {
+        if (isEnabled() && !getBounds().isEmpty()) {
             if (getMaskDrawer() != null) {
                 //  Because we need PorterDuff.Mode.SRC_ATOP later, the canvas has to be empty
                 //  So, we cannot use given canvas, which contains other stuff already.
@@ -257,6 +282,7 @@ public class RippleDrawable extends Drawable {
 
     static class RippleState extends ConstantState {
         //  General
+        boolean mEnabled;
         float mAlpha;
         //  Ripple
         boolean mRippleEnabled;
@@ -284,6 +310,7 @@ public class RippleDrawable extends Drawable {
 
         private void initWithState(RippleState orig) {
             //  General
+            mEnabled = orig.mEnabled;
             mAlpha = orig.mAlpha;
             //  Ripple
             mRippleEnabled = orig.mRippleEnabled;
@@ -304,6 +331,7 @@ public class RippleDrawable extends Drawable {
 
         private void initWithoutState() {
             //  General
+            mEnabled = true;
             mAlpha = 1;
             //  Ripple
             mRippleEnabled = true;

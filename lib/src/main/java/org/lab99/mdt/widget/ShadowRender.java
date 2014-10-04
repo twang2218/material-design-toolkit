@@ -11,6 +11,8 @@ import android.support.v8.renderscript.Allocation;
 import android.support.v8.renderscript.RenderScript;
 import android.support.v8.renderscript.ScriptIntrinsicBlur;
 
+import org.lab99.mdt.utils.Utils;
+
 class ShadowRender {
     //  Scale before blur
     //  shadow_scale(depth) = 2 * depth;
@@ -21,6 +23,8 @@ class ShadowRender {
     private final static float SHADOW_ALPHA_TOP = 0.25f;
     //  Alpha for Bottom(Ambient) Shadow
     private final static float SHADOW_ALPHA_BOTTOM = 0.22f;
+    //  Padding for drawing Shadow
+    private final static int SHADOW_PADDING_IN_DIP = 30;
 
     RenderScript mRenderScript;
     private Cache mCache;
@@ -53,8 +57,10 @@ class ShadowRender {
         if (shadow.mDepth > SHADOW_DEPTH_THRESHOLD && shadow.mMaskDrawer != null) {
 //            long begin = System.currentTimeMillis();
 
-            int width = shadow.mBounds.width();
-            int height = shadow.mBounds.height();
+            int padding = (int) Utils.getPixelFromDip(SHADOW_PADDING_IN_DIP);
+
+            int width = shadow.mBounds.width() + padding + padding;
+            int height = shadow.mBounds.height() + padding + padding;
 
             float scaleX = getShadowScale(shadow.mDepth, width);
             float scaleY = getShadowScale(shadow.mDepth, height);
@@ -68,6 +74,7 @@ class ShadowRender {
                 mShadowPaint.setAlpha(255);
                 Canvas cs = new Canvas(data.bitmap);
                 cs.scale(1 / scaleX, 1 / scaleY);
+                cs.translate(padding, padding);
 
                 //  draw background
                 shadow.mMaskDrawer.draw(cs);
@@ -93,6 +100,7 @@ class ShadowRender {
 
                 //  draw shadow on canvas
                 canvas.save();
+                canvas.translate(-padding, -padding);
                 canvas.scale(scaleX, scaleY);
                 //      draw Bottom Shadow
                 mShadowPaint.setAlpha((int) (SHADOW_ALPHA_BOTTOM * shadow.mAlpha));

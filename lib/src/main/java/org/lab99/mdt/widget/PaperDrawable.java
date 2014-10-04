@@ -109,6 +109,30 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
         return ((PaperState) getConstantState()).mTouchTracker;
     }
 
+    public boolean isRippleEnabled() {
+        return getRipple().isEnabled();
+    }
+
+    public void setRippleEnabled(boolean enabled) {
+        getRipple().setEnabled(enabled);
+    }
+
+    public boolean isRippleOnTouchEnabled() {
+        return getRipple().getOnStateChangedListener().isEnabled();
+    }
+
+    public void setRippleOnTouchEnabled(boolean enabled) {
+        getRipple().getOnStateChangedListener().setEnabled(enabled);
+    }
+
+    public float getDepth() {
+        return getShadowSelf().getDepth();
+    }
+
+    public void setDepth(float depth) {
+        getShadowSelf().setDepth(depth);
+    }
+
     static class PaperState extends ProxyState {
         //  0 - Self Shadow
         //  1 - Original Background
