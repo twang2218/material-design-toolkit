@@ -1,4 +1,4 @@
-package org.lab99.mdt.widget;
+package org.lab99.mdt.drawable;
 
 public interface OnStateChangedListener {
     public boolean onStateChange(int[] prev_states, int[] next_states);

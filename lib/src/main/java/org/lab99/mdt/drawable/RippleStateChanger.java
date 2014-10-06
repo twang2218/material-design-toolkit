@@ -1,4 +1,4 @@
-package org.lab99.mdt.widget;
+package org.lab99.mdt.drawable;
 
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;

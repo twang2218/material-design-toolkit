@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 
-import org.lab99.mdt.widget.PaperDrawable;
+import org.lab99.mdt.drawable.PaperDrawable;
 
 
 public class RippleActivity extends ActionBarActivity {
