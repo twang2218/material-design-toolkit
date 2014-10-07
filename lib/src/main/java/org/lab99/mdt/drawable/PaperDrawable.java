@@ -12,6 +12,10 @@ import android.view.View;
 import org.lab99.mdt.utils.ViewCompat;
 
 public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
+    public PaperDrawable(Context context) {
+        this(null, null, context);
+    }
+
     public PaperDrawable(Drawable original, Context context) {
         this(original, null, context);
     }
@@ -131,6 +135,14 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
 
     public void setDepth(float depth) {
         getShadowSelf().setDepth(depth);
+    }
+
+    public float getRotation() {
+        return getShadowSelf().getRotation();
+    }
+
+    public void setRotation(float rotation) {
+        getShadowSelf().setRotation(rotation);
     }
 
     static class PaperState extends ProxyState {

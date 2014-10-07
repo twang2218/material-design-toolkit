@@ -7,7 +7,7 @@ import android.view.View;
 /**
  * Touch location tracker
  */
-class TouchTracker implements View.OnTouchListener {
+public class TouchTracker implements View.OnTouchListener {
     private PointF mLastTouch = new PointF();
     private PointF mLastTouchRaw = new PointF();
 

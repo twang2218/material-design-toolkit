@@ -181,9 +181,7 @@ class ProxyDrawable extends Drawable implements Drawable.Callback {
 
     public void setOriginal(Drawable drawable) {
         ProxyState state = (ProxyState) getConstantState();
-        if (state.getOriginal() != null) {
-            state.setOriginal(drawable);
-        }
+        state.setOriginal(drawable);
     }
 
     protected ProxyState createConstantState(ProxyState orig, Callback callback, Resources res) {
@@ -240,7 +238,9 @@ class ProxyDrawable extends Drawable implements Drawable.Callback {
         }
 
         protected void initWithState(ProxyState orig, Resources res) {
-            mOriginal = orig.mOriginal.getConstantState().newDrawable(res);
+            if (orig.mOriginal != null) {
+                mOriginal = orig.mOriginal.getConstantState().newDrawable(res);
+            }
         }
 
         protected void initWithoutState(Resources res) {

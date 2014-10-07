@@ -18,7 +18,7 @@
         android:clipChildren="false"
         android:clipToPadding="false">
 
-        <TextView
+        <org.lab99.mdt.view.Paper
             android:id="@+id/bg1"
             android:layout_width="@dimen/mdt_fab_large_size"
             android:layout_height="@dimen/mdt_fab_large_size"
@@ -28,9 +28,10 @@
             android:focusable="true"
             android:gravity="center"
             android:rotation="45"
-            android:text="@string/button" />
+            android:text="@string/button"
+            app:depth="1" />
 
-        <TextView
+        <org.lab99.mdt.view.Paper
             android:id="@+id/bg2"
             android:layout_width="@dimen/mdt_fab_large_size"
             android:layout_height="@dimen/mdt_fab_large_size"
@@ -39,7 +40,8 @@
             android:clickable="true"
             android:focusable="true"
             android:gravity="center"
-            android:text="@string/button" />
+            android:text="@string/button"
+            app:depth="1" />
 
         <TextView
             android:id="@+id/bg3"

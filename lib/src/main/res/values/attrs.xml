@@ -5,9 +5,15 @@
         <attr name="backgroundColor" format="color" />
         <attr name="shadow" format="boolean" />
         <attr name="iconSize" format="dimension" />
-        <attr name="depth" format="float" />
+        <attr name="depth" />
         <attr name="android:padding" />
         <attr name="widgetWidth" format="dimension" />
         <attr name="widgetHeight" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="Paper">
+        <attr name="depth" format="float" />
+        <attr name="rippleEnabled" format="boolean" />
+        <attr name="rippleOnTouchEnabled" format="boolean" />
+        <attr name="android:background" />
     </declare-styleable>
 </resources>

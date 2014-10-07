@@ -15,15 +15,16 @@ public class ShadowActivity extends ActionBarActivity {
         setContentView(R.layout.activity_shadow);
 
         PaperDrawable background;
-        View bg1 = findViewById(R.id.bg1);
-        background = PaperDrawable.apply(bg1);
-        background.setDepth(2);
-        background.setRippleOnTouchEnabled(false);
 
-        View bg2 = findViewById(R.id.bg2);
-        background = PaperDrawable.apply(bg2);
-        background.setDepth(2);
-        background.setRippleOnTouchEnabled(false);
+//        View bg1 = findViewById(R.id.bg1);
+//        background = PaperDrawable.apply(bg1);
+//        background.setDepth(2);
+//        background.setRippleOnTouchEnabled(false);
+//
+//        View bg2 = findViewById(R.id.bg2);
+//        background = PaperDrawable.apply(bg2);
+//        background.setDepth(2);
+//        background.setRippleOnTouchEnabled(false);
 
         View bg3 = findViewById(R.id.bg3);
         background = PaperDrawable.apply(bg3);
