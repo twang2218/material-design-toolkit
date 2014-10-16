@@ -24,7 +24,6 @@ public class RippleDrawable extends Drawable {
     private RippleState mState;
     private float mRadius;
 
-
     public RippleDrawable() {
         this(null);
 
@@ -164,18 +163,20 @@ public class RippleDrawable extends Drawable {
     @Override
     public void draw(Canvas canvas) {
         if (isEnabled() && !getBounds().isEmpty()) {
-            if (getMaskDrawer() != null) {
+            if (getMaskDrawer() != null && mRadius >= DEFAULT_MIN_RADIUS) {
+                //  Clear bitmap
+                mBitmapBackground.eraseColor(Color.TRANSPARENT);
+                mBitmapRipple.eraseColor(Color.TRANSPARENT);
+
                 //  Because we need PorterDuff.Mode.SRC_ATOP later, the canvas has to be empty
                 //  So, we cannot use given canvas, which contains other stuff already.
                 Canvas c = new Canvas(mBitmapBackground);
-                c.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
                 //  draw background
                 getMaskDrawer().draw(c);
 
                 //  Render Ripple Layer
                 //  Ripple has to be drawn on a Bitmap layer, otherwise later Mode.SRC_ATOP will be wrong
                 Canvas cr = new Canvas(mBitmapRipple);
-                cr.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
                 //  render ripple
                 drawRipple(cr);
 

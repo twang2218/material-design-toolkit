@@ -49,7 +49,7 @@ public class Paper extends TextView {
             try {
                 setDepth(a.getFloat(R.styleable.Paper_depth, 0));
                 setRippleEnabled(a.getBoolean(R.styleable.Paper_rippleEnabled, true));
-                setRippleEnabled(a.getBoolean(R.styleable.Paper_rippleOnTouchEnabled, true));
+                setRippleOnTouchEnabled(a.getBoolean(R.styleable.Paper_rippleOnTouchEnabled, false));
 //                setBackground(a.getDrawable(R.styleable.Paper_android_background));
             } finally {
                 a.recycle();

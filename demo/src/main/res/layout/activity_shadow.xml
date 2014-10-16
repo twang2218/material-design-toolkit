@@ -43,16 +43,17 @@
             android:text="@string/button"
             app:depth="1" />
 
-        <TextView
+        <org.lab99.mdt.view.Paper
             android:id="@+id/bg3"
             android:layout_width="@dimen/mdt_fab_large_size"
             android:layout_height="@dimen/mdt_fab_large_size"
             android:layout_margin="4dp"
-            android:background="@drawable/round_background"
+            android:background="@drawable/card_background"
             android:clickable="true"
             android:focusable="true"
             android:gravity="center"
-            android:text="@string/button" />
+            android:text="@string/button"
+            app:depth="1" />
     </LinearLayout>
 
     <LinearLayout

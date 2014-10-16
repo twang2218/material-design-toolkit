@@ -115,11 +115,7 @@ public class ShadowDrawable extends Drawable {
 
     @Override
     protected boolean onStateChange(int[] stateSet) {
-        if (getOnStateChangedListener() != null) {
-            return getOnStateChangedListener().onStateChange(getState(), stateSet);
-        } else {
-            return false;
-        }
+        return getOnStateChangedListener() != null && getOnStateChangedListener().onStateChange(getState(), stateSet);
     }
 
     @Override

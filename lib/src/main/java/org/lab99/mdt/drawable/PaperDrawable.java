@@ -97,20 +97,24 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
         getRipple().setBounds(bounds);
     }
 
+    private PaperState getPaperState() {
+        return ((PaperState) getConstantState());
+    }
+
     public ShadowDrawable getShadowSelf() {
-        return ((PaperState) getConstantState()).mShadowSelf;
+        return getPaperState().mShadowSelf;
     }
 
     public RippleDrawable getRipple() {
-        return ((PaperState) getConstantState()).mRipple;
+        return getPaperState().mRipple;
     }
 
     public Drawable getShadowChild() {
-        return ((PaperState) getConstantState()).mShadowChildren;
+        return getPaperState().mShadowChildren;
     }
 
     public TouchTracker getTouchTracker() {
-        return ((PaperState) getConstantState()).mTouchTracker;
+        return getPaperState().mTouchTracker;
     }
 
     public boolean isRippleEnabled() {
@@ -184,7 +188,6 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
             mRipple = new RippleDrawable();
             //  TODO: to be remove
             mShadowChildren = new ColorDrawable(Color.TRANSPARENT);
-
             setTouchTracker(new TouchTracker());
         }
 
