@@ -262,6 +262,10 @@ public class RippleDrawable extends Drawable {
     }
 
     private void drawRipple(Canvas canvas) {
+        //  set clip
+        canvas.save();
+        canvas.clipRect(getBounds());
+
         //  draw overlay layer
         if (mState.mOverlayEnabled) {
             //  calculate the correct overlay color with current alpha
@@ -279,6 +283,9 @@ public class RippleDrawable extends Drawable {
             mState.mRipplePaint.setAlpha((int) (Color.alpha(mState.mRippleColor) * mState.mAlpha));
             canvas.drawCircle(mState.mRippleCenter.x, mState.mRippleCenter.y, mRadius, mState.mRipplePaint);
         }
+
+        //  restore setting
+        canvas.restore();
     }
 
     static class RippleState extends ConstantState {

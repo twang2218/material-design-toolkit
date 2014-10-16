@@ -180,6 +180,9 @@ class ProxyDrawable extends Drawable implements Drawable.Callback {
     }
 
     public void setOriginal(Drawable drawable) {
+        if (drawable != null) {
+            drawable.setBounds(getBounds());
+        }
         ProxyState state = (ProxyState) getConstantState();
         state.setOriginal(drawable);
     }

@@ -16,4 +16,9 @@
         <attr name="rippleOnTouchEnabled" format="boolean" />
         <attr name="android:background" />
     </declare-styleable>
+    <declare-styleable name="Button">
+        <attr name="android:clickable" />
+        <attr name="android:focusable" />
+        <attr name="android:background" />
+    </declare-styleable>
 </resources>

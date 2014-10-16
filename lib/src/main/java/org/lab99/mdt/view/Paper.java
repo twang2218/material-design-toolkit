@@ -47,9 +47,9 @@ public class Paper extends TextView {
             }
 
             try {
-                setDepth(a.getFloat(R.styleable.Paper_depth, 0));
-                setRippleEnabled(a.getBoolean(R.styleable.Paper_rippleEnabled, true));
-                setRippleOnTouchEnabled(a.getBoolean(R.styleable.Paper_rippleOnTouchEnabled, false));
+                setDepth(a.getFloat(R.styleable.Paper_depth, getDefaultDepth()));
+                setRippleEnabled(a.getBoolean(R.styleable.Paper_rippleEnabled, isDefaultRippleEnabled()));
+                setRippleOnTouchEnabled(a.getBoolean(R.styleable.Paper_rippleOnTouchEnabled, isDefaultRippleOnTouchEnabled()));
 //                setBackground(a.getDrawable(R.styleable.Paper_android_background));
             } finally {
                 a.recycle();
@@ -129,5 +129,16 @@ public class Paper extends TextView {
         postInvalidate();
     }
 
+    //  default value
+    protected float getDefaultDepth() {
+        return 0;
+    }
 
+    protected boolean isDefaultRippleEnabled() {
+        return true;
+    }
+
+    protected boolean isDefaultRippleOnTouchEnabled() {
+        return false;
+    }
 }
