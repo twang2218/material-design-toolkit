@@ -121,6 +121,98 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+
+        <org.lab99.mdt.view.ActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:gravity="center"
+            app:depth="1"
+            app:iconDrawable="@drawable/ic_folder" />
+
+        <org.lab99.mdt.view.ActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@color/mdt_white"
+            android:gravity="center"
+            app:iconDrawable="@drawable/ic_folder" />
+
+        <org.lab99.mdt.view.ActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@color/mdt_white"
+            android:gravity="center"
+            app:depth="1"
+            app:iconDrawable="@drawable/ic_folder" />
+
+        <org.lab99.mdt.view.ActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@color/mdt_green_500"
+            android:gravity="center"
+            android:textColor="@color/mdt_white"
+            app:depth="1"
+            app:iconDrawable="@drawable/ic_key_white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+
+        <org.lab99.mdt.view.ActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:gravity="center"
+            app:depth="1"
+            app:iconDrawable="@drawable/ic_folder"
+            app:size="@dimen/mdt_fab_small_size" />
+
+        <org.lab99.mdt.view.ActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@color/mdt_white"
+            android:gravity="center"
+            app:iconDrawable="@drawable/ic_folder"
+            app:size="@dimen/mdt_fab_small_size" />
+
+        <org.lab99.mdt.view.ActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@color/mdt_white"
+            android:gravity="center"
+            app:depth="1"
+            app:iconDrawable="@drawable/ic_folder"
+            app:size="@dimen/mdt_fab_small_size" />
+
+        <org.lab99.mdt.view.ActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:background="@color/mdt_green_500"
+            android:gravity="center"
+            android:textColor="@color/mdt_white"
+            app:depth="1"
+            app:iconDrawable="@drawable/ic_key_white"
+            app:size="@dimen/mdt_fab_small_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <org.lab99.mdt.widget.RoundButton
