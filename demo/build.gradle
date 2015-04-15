@@ -1,17 +1,17 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "20.0.0"
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "org.lab99.mdt.demo"
         minSdkVersion 8
-        targetSdkVersion 19
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         //  Since MDT depends on RenderScript, so these 2 lines has to be added to enable RenderScript.
-        renderscriptTargetApi 19
+        renderscriptTargetApi 22
         renderscriptSupportModeEnabled true
     }
     buildTypes {
@@ -32,6 +32,6 @@ repositories {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:20.0.0'
+    compile 'com.android.support:appcompat-v7:22.0.0'
     compile project(':lib')
 }

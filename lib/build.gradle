@@ -1,20 +1,19 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "20.0.0"
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "org.lab99.mdt"
         minSdkVersion 8
-        targetSdkVersion 19
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testApplicationId "org.lab99.mdt.test"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         testHandleProfiling true
         testFunctionalTest true
-        renderscriptTargetApi 19
+        renderscriptTargetApi 22
         renderscriptSupportModeEnabled true
     }
     buildTypes {
@@ -34,6 +33,6 @@ repositories {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:20.0.0'
+    compile 'com.android.support:support-v4:22.0.0'
     compile 'com.nineoldandroids:library:2.4.0'
 }
