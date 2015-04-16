@@ -27,15 +27,15 @@ class MessengerDrawable extends ProxyDrawable {
     }
 
     @Override
-    protected ProxyState createConstantState(ProxyState orig, Callback callback, Resources res) {
-        return new MessengerState(orig, callback, res);
+    protected ProxyState createConstantState(ProxyState orig, Resources res) {
+        return new MessengerState(orig, res);
     }
 
     static class MessengerState extends ProxyState {
         Drawable mReceiver;
 
-        MessengerState(ProxyState orig, Callback callback, Resources res) {
-            super(orig, callback, res);
+        MessengerState(ProxyState orig, Resources res) {
+            super(orig, res);
         }
 
         @Override

@@ -63,8 +63,8 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
     }
 
     @Override
-    protected ProxyState createConstantState(ProxyState orig, Callback callback, Resources res) {
-        return new PaperState((PaperState) orig, callback, res);
+    protected ProxyState createConstantState(ProxyState orig, Resources res) {
+        return new PaperState((PaperState) orig, res);
     }
 
     @Override
@@ -161,8 +161,8 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
         TouchTracker mTouchTracker;
         Context mContext;
 
-        PaperState(PaperState orig, Callback callback, Resources res) {
-            super(orig, callback, res);
+        PaperState(PaperState orig, Resources res) {
+            super(orig, res);
         }
 
         @Override
@@ -234,15 +234,15 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
         }
 
         public void setShadowSelf(ShadowDrawable shadow) {
-            mShadowSelf = (ShadowDrawable) prepareCallback(mShadowSelf, shadow);
+            mShadowSelf = (ShadowDrawable) copyDrawable(shadow);
         }
 
         public void setRipple(RippleDrawable ripple) {
-            mRipple = (RippleDrawable) prepareCallback(mRipple, ripple);
+            mRipple = (RippleDrawable) copyDrawable(ripple);
         }
 
         public void setShadowChild(Drawable shadow) {
-            mShadowChildren = prepareCallback(mShadowChildren, shadow);
+            mShadowChildren = copyDrawable(shadow);
         }
 
         public void setTouchTracker(TouchTracker tracker) {

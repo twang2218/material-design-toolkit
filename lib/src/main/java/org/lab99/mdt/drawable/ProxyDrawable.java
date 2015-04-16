@@ -9,10 +9,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 
-import org.lab99.mdt.utils.DrawableCompat;
-
-import java.lang.ref.WeakReference;
-
 /**
  * A drawable will act as a proxy
  */
@@ -27,13 +23,15 @@ class ProxyDrawable extends Drawable implements Drawable.Callback {
     ProxyDrawable(Drawable original, ProxyState state) {
         this(state, null);
         mState.setOriginal(original);
+        mState.setCallback(this);
+
         if (original != null && !original.getBounds().isEmpty()) {
             super.setBounds(original.getBounds());
         }
     }
 
     ProxyDrawable(ProxyState state, Resources res) {
-        mState = createConstantState(state, this, res);
+        mState = createConstantState(state, res);
     }
 
     //  Overrides of Drawable
@@ -79,12 +77,6 @@ class ProxyDrawable extends Drawable implements Drawable.Callback {
             return getOriginal().setVisible(visible, restart);
         else
             return super.setVisible(visible, restart);
-    }
-
-    @Override
-    public void invalidateSelf() {
-        if (getOriginal() != null)
-            getOriginal().invalidateSelf();
     }
 
     @Override
@@ -150,26 +142,17 @@ class ProxyDrawable extends Drawable implements Drawable.Callback {
 
     @Override
     public void invalidateDrawable(Drawable who) {
-        Callback callback = DrawableCompat.getCallback(this);
-        if (mState.verifyDrawable(who) && callback != null) {
-            callback.invalidateDrawable(this);
-        }
+        invalidateSelf();
     }
 
     @Override
     public void scheduleDrawable(Drawable who, Runnable what, long when) {
-        Callback callback = DrawableCompat.getCallback(this);
-        if (mState.verifyDrawable(who) && callback != null) {
-            callback.scheduleDrawable(this, what, when);
-        }
+        scheduleSelf(what, when);
     }
 
     @Override
     public void unscheduleDrawable(Drawable who, Runnable what) {
-        Callback callback = DrawableCompat.getCallback(this);
-        if (mState.verifyDrawable(who) && callback != null) {
-            callback.unscheduleDrawable(this, what);
-        }
+        unscheduleSelf(what);
     }
 
     //  Getters/Setters
@@ -187,23 +170,21 @@ class ProxyDrawable extends Drawable implements Drawable.Callback {
         state.setOriginal(drawable);
     }
 
-    protected ProxyState createConstantState(ProxyState orig, Callback callback, Resources res) {
-        return new ProxyState(orig, callback, res);
+    protected ProxyState createConstantState(ProxyState orig, Resources res) {
+        return new ProxyState(orig, res);
     }
 
     //  ProxyState
 
     static class ProxyState extends Drawable.ConstantState {
-        private WeakReference<Callback> mCallback;
         private Drawable mOriginal;
 
-        ProxyState(ProxyState orig, Callback callback, Resources res) {
+        ProxyState(ProxyState orig, Resources res) {
             if (orig != null) {
                 initWithState(orig, res);
             } else {
                 initWithoutState(res);
             }
-            setCallback(callback);
         }
 
         @Override
@@ -226,17 +207,25 @@ class ProxyDrawable extends Drawable implements Drawable.Callback {
         }
 
         public void setOriginal(Drawable original) {
-            mOriginal = prepareCallback(mOriginal, original);
+            if (original != mOriginal) {
+                mOriginal = copyDrawable(original);
+            }
         }
 
-        protected Callback getCallback() {
-            return mCallback.get();
-        }
-
-        protected void setCallback(Callback callback) {
-            mCallback = new WeakReference<Callback>(callback);
+        protected void setCallback(Drawable.Callback callback) {
             if (mOriginal != null) {
-                mOriginal.setCallback(mCallback.get());
+                mOriginal.setCallback(callback);
+            }
+        }
+
+        protected Drawable copyDrawable(Drawable drawable) {
+            if (drawable != null) {
+                //  remove original drawable callback
+                drawable.setCallback(null);
+                //  get a copy of new drawable
+                return drawable.getConstantState().newDrawable();
+            } else {
+                return null;
             }
         }
 
@@ -252,27 +241,6 @@ class ProxyDrawable extends Drawable implements Drawable.Callback {
 
         protected boolean verifyDrawable(Drawable who) {
             return who == getOriginal();
-        }
-
-        protected Drawable prepareCallback(Drawable src, Drawable target) {
-            if (src == target) {
-                return target;
-            }
-
-            //  remove original drawable callback
-            if (src != null) {
-                src.setCallback(null);
-            }
-            //  get a copy of new drawable
-            if (target != null) {
-                Drawable prepared = target.getConstantState().newDrawable();
-                //  set callback
-                prepared.setCallback(mCallback.get());
-
-                return prepared;
-            } else {
-                return null;
-            }
         }
     }
 }
