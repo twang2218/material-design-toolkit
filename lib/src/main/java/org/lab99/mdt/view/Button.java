@@ -14,7 +14,6 @@ import org.lab99.mdt.utils.Utils;
 public class Button extends Paper {
     public Button(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context, attrs);
     }
 
     public Button(Context context) {
@@ -39,7 +38,6 @@ public class Button extends Paper {
             try {
                 setClickable(a.getBoolean(R.styleable.Button_android_clickable, true));
                 setFocusable(a.getBoolean(R.styleable.Button_android_focusable, true));
-                setBackground(a.getDrawable(R.styleable.Button_android_background));
             } finally {
                 a.recycle();
             }
@@ -57,12 +55,12 @@ public class Button extends Paper {
     //  Getters & Setters
 
     @Override
-    public void setBackground(Drawable background) {
+    public void setOriginalBackground(Drawable background) {
         if (background instanceof ColorDrawable) {
             //  Convert color drawable to the default shape with the specified color
             background = getBackgroundFromColorDrawable((ColorDrawable) background);
         }
-        super.setBackground(background);
+        super.setOriginalBackground(background);
     }
 
     protected Drawable getBackgroundFromColorDrawable(ColorDrawable colorDrawable) {

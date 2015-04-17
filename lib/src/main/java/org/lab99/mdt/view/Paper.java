@@ -31,12 +31,7 @@ public class Paper extends TextView {
     //  initializer
 
     protected void init(Context context, AttributeSet attrs) {
-        initViews(context);
         initAttributes(context, attrs);
-    }
-
-    protected void initViews(Context context) {
-        ViewCompat.setBackground(this, new PaperDrawable(super.getBackground(), context));
     }
 
     protected void initAttributes(Context context, AttributeSet attrs) {
@@ -50,7 +45,7 @@ public class Paper extends TextView {
                 setDepth(a.getFloat(R.styleable.Paper_depth, getDefaultDepth()));
                 setRippleEnabled(a.getBoolean(R.styleable.Paper_rippleEnabled, isDefaultRippleEnabled()));
                 setRippleOnTouchEnabled(a.getBoolean(R.styleable.Paper_rippleOnTouchEnabled, isDefaultRippleOnTouchEnabled()));
-//                setBackground(a.getDrawable(R.styleable.Paper_android_background));
+                setOriginalBackground(a.getDrawable(R.styleable.Paper_android_background));
             } finally {
                 a.recycle();
             }
@@ -72,12 +67,20 @@ public class Paper extends TextView {
         return super.onTouchEvent(event);
     }
 
-    @Override
-    public Drawable getBackground() {
-        return getPaperBackground().getOriginal();
-    }
-
     //  Getters & Setters
+
+    public PaperDrawable getPaperBackground() {
+        Drawable background = getBackground();
+
+        if (background instanceof PaperDrawable) {
+            return (PaperDrawable) background;
+        } else {
+            //  create the PaperDrawable to wrap the original one, if it's not already PaperDrawable.
+            PaperDrawable drawable = new PaperDrawable(getBackground(), getContext());
+            ViewCompat.setBackground(this, drawable);
+            return drawable;
+        }
+    }
 
     public boolean isRippleEnabled() {
         return getPaperBackground().isRippleEnabled();
@@ -96,16 +99,12 @@ public class Paper extends TextView {
         getPaperBackground().setRippleOnTouchEnabled(enabled);
     }
 
-    @SuppressWarnings("deprecation")
-    protected PaperDrawable getPaperBackground() {
-        Drawable drawable = super.getBackground();
-        if (drawable == null || !(drawable instanceof PaperDrawable)) {
-            //  if the background is not the right one, then create one
-            PaperDrawable paperDrawable = new PaperDrawable(drawable, getContext());
-            super.setBackgroundDrawable(paperDrawable);
-        }
+    public Drawable getOriginalBackground() {
+        return getPaperBackground().getOriginal();
+    }
 
-        return ((PaperDrawable) super.getBackground());
+    public void setOriginalBackground(Drawable background) {
+        getPaperBackground().setOriginal(background);
     }
 
     public float getDepth() {

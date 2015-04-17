@@ -127,7 +127,7 @@ public class ShadowDrawable extends Drawable {
     public void setContext(Context context) {
         try {
             mState.mRender.setRenderScript(RenderScript.create(context));
-        } catch (Error error) {
+        } catch (Throwable error) {
             error.printStackTrace();
         }
         Utils.init(context);

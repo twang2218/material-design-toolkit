@@ -18,7 +18,6 @@ public class ActionButton extends Button {
 
     public ActionButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context, attrs);
     }
 
     public ActionButton(Context context) {
