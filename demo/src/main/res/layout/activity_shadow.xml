@@ -8,7 +8,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/mdt_grey_200"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:orientation="vertical"
@@ -29,8 +28,8 @@
 
             <org.lab99.mdt.view.Paper
                 android:id="@+id/paper1"
-                android:layout_width="@dimen/mdt_fab_large_size"
-                android:layout_height="@dimen/mdt_fab_large_size"
+                android:layout_width="@dimen/material_fab_large_size"
+                android:layout_height="@dimen/material_fab_large_size"
                 android:layout_margin="4dp"
                 android:background="@drawable/round_background"
                 android:clickable="true"
@@ -42,8 +41,8 @@
 
             <org.lab99.mdt.view.Paper
                 android:id="@+id/paper2"
-                android:layout_width="@dimen/mdt_fab_large_size"
-                android:layout_height="@dimen/mdt_fab_large_size"
+                android:layout_width="@dimen/material_fab_large_size"
+                android:layout_height="@dimen/material_fab_large_size"
                 android:layout_margin="4dp"
                 android:background="@drawable/round_background"
                 android:clickable="true"
@@ -93,7 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:background="@color/mdt_white"
+                android:background="@color/material_white"
                 android:gravity="center"
                 android:padding="8dp"
                 android:text="@string/button" />
@@ -102,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:background="@color/mdt_white"
+                android:background="@color/material_white"
                 android:gravity="center"
                 android:padding="8dp"
                 android:rotation="20"
@@ -113,25 +112,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:background="@color/mdt_green_500"
+                android:background="@color/material_green_500"
                 android:gravity="center"
                 android:padding="8dp"
                 android:text="OK"
-                android:textColor="@color/mdt_white"
+                android:textColor="@color/material_white"
                 app:depth="1" />
 
             <org.lab99.mdt.view.Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:background="@color/mdt_red_500"
+                android:background="@color/material_red_500"
                 android:drawableLeft="@drawable/ic_key_white"
                 android:drawablePadding="4dp"
                 android:gravity="center"
                 android:padding="8dp"
                 android:rotation="-45"
                 android:text="Cancel"
-                android:textColor="@color/mdt_white"
+                android:textColor="@color/material_white"
                 app:depth="1" />
 
         </LinearLayout>
@@ -161,7 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:background="@color/mdt_white"
+                android:background="@color/material_white"
                 android:gravity="center"
                 app:iconDrawable="@drawable/ic_folder" />
 
@@ -169,7 +168,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:background="@color/mdt_white"
+                android:background="@color/material_white"
                 android:gravity="center"
                 app:depth="3"
                 app:iconDrawable="@drawable/ic_folder" />
@@ -178,9 +177,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:background="@color/mdt_green_500"
+                android:background="@color/material_green_500"
                 android:gravity="center"
-                android:textColor="@color/mdt_white"
+                android:textColor="@color/material_white"
                 app:depth="4"
                 app:iconDrawable="@drawable/ic_key_white" />
 
@@ -206,37 +205,37 @@
                 android:gravity="center"
                 app:depth="1"
                 app:iconDrawable="@drawable/ic_folder"
-                app:size="@dimen/mdt_fab_small_size" />
+                app:size="@dimen/material_fab_small_size" />
 
             <org.lab99.mdt.view.ActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:background="@color/mdt_white"
+                android:background="@color/material_white"
                 android:gravity="center"
                 app:iconDrawable="@drawable/ic_folder"
-                app:size="@dimen/mdt_fab_small_size" />
+                app:size="@dimen/material_fab_small_size" />
 
             <org.lab99.mdt.view.ActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:background="@color/mdt_white"
+                android:background="@color/material_white"
                 android:gravity="center"
                 app:depth="1"
                 app:iconDrawable="@drawable/ic_folder"
-                app:size="@dimen/mdt_fab_small_size" />
+                app:size="@dimen/material_fab_small_size" />
 
             <org.lab99.mdt.view.ActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:background="@color/mdt_green_500"
+                android:background="@color/material_green_500"
                 android:gravity="center"
-                android:textColor="@color/mdt_white"
+                android:textColor="@color/material_white"
                 app:depth="1"
                 app:iconDrawable="@drawable/ic_key_white"
-                app:size="@dimen/mdt_fab_small_size" />
+                app:size="@dimen/material_fab_small_size" />
 
         </LinearLayout>
     </LinearLayout>

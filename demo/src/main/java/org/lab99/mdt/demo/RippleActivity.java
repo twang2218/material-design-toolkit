@@ -31,7 +31,7 @@ public class RippleActivity extends ActionBarActivity {
         View arena = findViewById(R.id.arena);
 
         PaperDrawable arena_background = PaperDrawable.apply(buttonInside, arena);
-        arena_background.getRipple().setRippleColor(getResources().getColor(R.color.mdt_red_500));
+        arena_background.getRipple().setRippleColor(getResources().getColor(R.color.material_red_500));
     }
 
 }

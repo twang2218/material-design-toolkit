@@ -4,6 +4,6 @@
     android:shape="oval">
     <solid android:color="@android:color/white" />
     <size
-        android:width="@dimen/mdt_fab_large_size"
-        android:height="@dimen/mdt_fab_large_size" />
+        android:width="@dimen/material_fab_large_size"
+        android:height="@dimen/material_fab_large_size" />
 </shape>

@@ -11,165 +11,165 @@
     <!--Text Style-->
 
     <!--Text Style - Dimension-->
-    <dimen name="mdt_display_4">112sp</dimen>
-    <dimen name="mdt_display_3">56sp</dimen>
-    <dimen name="mdt_display_2">45sp</dimen>
-    <dimen name="mdt_display_1">34sp</dimen>
-    <dimen name="mdt_headline">24sp</dimen>
-    <dimen name="mdt_title">20sp</dimen>
-    <dimen name="mdt_subhead">16sp</dimen>
-    <dimen name="mdt_body_2">14sp</dimen>
-    <dimen name="mdt_body_1">14sp</dimen>
-    <dimen name="mdt_caption">12sp</dimen>
-    <dimen name="mdt_menu">14sp</dimen>
-    <dimen name="mdt_button">14sp</dimen>
+    <dimen name="material_display_4">112sp</dimen>
+    <dimen name="material_display_3">56sp</dimen>
+    <dimen name="material_display_2">45sp</dimen>
+    <dimen name="material_display_1">34sp</dimen>
+    <dimen name="material_headline">24sp</dimen>
+    <dimen name="material_title">20sp</dimen>
+    <dimen name="material_subhead">16sp</dimen>
+    <dimen name="material_body_2">14sp</dimen>
+    <dimen name="material_body_1">14sp</dimen>
+    <dimen name="material_caption">12sp</dimen>
+    <dimen name="material_menu">14sp</dimen>
+    <dimen name="material_button">14sp</dimen>
 
     <!--Text Style - Color-->
 
     <!--Light Theme Text Color-->
-    <color name="mdt_display_4_light">@color/mdt_black_54</color>
-    <color name="mdt_display_3_light">@color/mdt_black_54</color>
-    <color name="mdt_display_2_light">@color/mdt_black_54</color>
-    <color name="mdt_display_1_light">@color/mdt_black_54</color>
-    <color name="mdt_headline_light">@color/mdt_black_87</color>
-    <color name="mdt_title_light">@color/mdt_black_87</color>
-    <color name="mdt_subhead_light">@color/mdt_black_87</color>
-    <color name="mdt_body_2_light">@color/mdt_black_87</color>
-    <color name="mdt_body_1_light">@color/mdt_black_87</color>
-    <color name="mdt_caption_light">@color/mdt_black_54</color>
-    <color name="mdt_menu_light">@color/mdt_black_87</color>
-    <color name="mdt_button_light">@color/mdt_black_87</color>
+    <color name="material_display_4_light">@color/material_black_54</color>
+    <color name="material_display_3_light">@color/material_black_54</color>
+    <color name="material_display_2_light">@color/material_black_54</color>
+    <color name="material_display_1_light">@color/material_black_54</color>
+    <color name="material_headline_light">@color/material_black_87</color>
+    <color name="material_title_light">@color/material_black_87</color>
+    <color name="material_subhead_light">@color/material_black_87</color>
+    <color name="material_body_2_light">@color/material_black_87</color>
+    <color name="material_body_1_light">@color/material_black_87</color>
+    <color name="material_caption_light">@color/material_black_54</color>
+    <color name="material_menu_light">@color/material_black_87</color>
+    <color name="material_button_light">@color/material_black_87</color>
 
     <!--Dark Theme Text Color-->
-    <color name="mdt_display_4_dark">@color/mdt_white_54</color>
-    <color name="mdt_display_3_dark">@color/mdt_white_54</color>
-    <color name="mdt_display_2_dark">@color/mdt_white_54</color>
-    <color name="mdt_display_1_dark">@color/mdt_white_54</color>
-    <color name="mdt_headline_dark">@color/mdt_white_87</color>
-    <color name="mdt_title_dark">@color/mdt_white_87</color>
-    <color name="mdt_subhead_dark">@color/mdt_white_87</color>
-    <color name="mdt_body_2_dark">@color/mdt_white_87</color>
-    <color name="mdt_body_1_dark">@color/mdt_white_87</color>
-    <color name="mdt_caption_dark">@color/mdt_white_54</color>
-    <color name="mdt_menu_dark">@color/mdt_white_87</color>
-    <color name="mdt_button_dark">@color/mdt_white_87</color>
+    <color name="material_display_4_dark">@color/material_white_54</color>
+    <color name="material_display_3_dark">@color/material_white_54</color>
+    <color name="material_display_2_dark">@color/material_white_54</color>
+    <color name="material_display_1_dark">@color/material_white_54</color>
+    <color name="material_headline_dark">@color/material_white_87</color>
+    <color name="material_title_dark">@color/material_white_87</color>
+    <color name="material_subhead_dark">@color/material_white_87</color>
+    <color name="material_body_2_dark">@color/material_white_87</color>
+    <color name="material_body_1_dark">@color/material_white_87</color>
+    <color name="material_caption_dark">@color/material_white_54</color>
+    <color name="material_menu_dark">@color/material_white_87</color>
+    <color name="material_button_dark">@color/material_white_87</color>
 
     <!--Base Style    -->
     <style name="TextAppearance.MaterialDesign" parent="TextAppearance.RobotoRegular" />
 
     <!--Light Theme (Default)-->
     <style name="TextAppearance.MaterialDesign.Display4" parent="TextAppearance.RobotoLight">
-        <item name="android:textColor">@color/mdt_display_4_light</item>
-        <item name="android:textSize">@dimen/mdt_display_4</item>
+        <item name="android:textColor">@color/material_display_4_light</item>
+        <item name="android:textSize">@dimen/material_display_4</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Display3">
-        <item name="android:textColor">@color/mdt_display_3_light</item>
-        <item name="android:textSize">@dimen/mdt_display_3</item>
+        <item name="android:textColor">@color/material_display_3_light</item>
+        <item name="android:textSize">@dimen/material_display_3</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Display2">
-        <item name="android:textColor">@color/mdt_display_2_light</item>
-        <item name="android:textSize">@dimen/mdt_display_2</item>
+        <item name="android:textColor">@color/material_display_2_light</item>
+        <item name="android:textSize">@dimen/material_display_2</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Display1">
-        <item name="android:textColor">@color/mdt_display_1_light</item>
-        <item name="android:textSize">@dimen/mdt_display_1</item>
+        <item name="android:textColor">@color/material_display_1_light</item>
+        <item name="android:textSize">@dimen/material_display_1</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Headline">
-        <item name="android:textColor">@color/mdt_headline_light</item>
-        <item name="android:textSize">@dimen/mdt_headline</item>
+        <item name="android:textColor">@color/material_headline_light</item>
+        <item name="android:textSize">@dimen/material_headline</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Title">
-        <item name="android:textColor">@color/mdt_title_light</item>
-        <item name="android:textSize">@dimen/mdt_title</item>
+        <item name="android:textColor">@color/material_title_light</item>
+        <item name="android:textSize">@dimen/material_title</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Subhead">
-        <item name="android:textColor">@color/mdt_subhead_light</item>
-        <item name="android:textSize">@dimen/mdt_subhead</item>
+        <item name="android:textColor">@color/material_subhead_light</item>
+        <item name="android:textSize">@dimen/material_subhead</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Body2">
-        <item name="android:textColor">@color/mdt_body_2_light</item>
-        <item name="android:textSize">@dimen/mdt_body_2</item>
+        <item name="android:textColor">@color/material_body_2_light</item>
+        <item name="android:textSize">@dimen/material_body_2</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Body1">
-        <item name="android:textColor">@color/mdt_body_1_light</item>
-        <item name="android:textSize">@dimen/mdt_body_1</item>
+        <item name="android:textColor">@color/material_body_1_light</item>
+        <item name="android:textSize">@dimen/material_body_1</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Caption">
-        <item name="android:textColor">@color/mdt_caption_light</item>
-        <item name="android:textSize">@dimen/mdt_caption</item>
+        <item name="android:textColor">@color/material_caption_light</item>
+        <item name="android:textSize">@dimen/material_caption</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Menu">
-        <item name="android:textColor">@color/mdt_menu_light</item>
-        <item name="android:textSize">@dimen/mdt_menu</item>
+        <item name="android:textColor">@color/material_menu_light</item>
+        <item name="android:textSize">@dimen/material_menu</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Button">
         <item name="android:capitalize">characters</item>
-        <item name="android:textColor">@color/mdt_button_light</item>
-        <item name="android:textSize">@dimen/mdt_button</item>
+        <item name="android:textColor">@color/material_button_light</item>
+        <item name="android:textSize">@dimen/material_button</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <!--Dark Theme-->
     <style name="TextAppearance.MaterialDesign.Display4.Dark">
-        <item name="android:textColor">@color/mdt_display_4_dark</item>
+        <item name="android:textColor">@color/material_display_4_dark</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Display3.Dark">
-        <item name="android:textColor">@color/mdt_display_3_dark</item>
+        <item name="android:textColor">@color/material_display_3_dark</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Display2.Dark">
-        <item name="android:textColor">@color/mdt_display_2_dark</item>
+        <item name="android:textColor">@color/material_display_2_dark</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Display1.Dark">
-        <item name="android:textColor">@color/mdt_display_1_dark</item>
+        <item name="android:textColor">@color/material_display_1_dark</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Headline.Dark">
-        <item name="android:textColor">@color/mdt_headline_dark</item>
+        <item name="android:textColor">@color/material_headline_dark</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Title.Dark">
-        <item name="android:textColor">@color/mdt_title_dark</item>
+        <item name="android:textColor">@color/material_title_dark</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Subhead.Dark">
-        <item name="android:textColor">@color/mdt_subhead_dark</item>
+        <item name="android:textColor">@color/material_subhead_dark</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Body2.Dark">
-        <item name="android:textColor">@color/mdt_body_2_dark</item>
+        <item name="android:textColor">@color/material_body_2_dark</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Body1.Dark">
-        <item name="android:textColor">@color/mdt_body_1_dark</item>
+        <item name="android:textColor">@color/material_body_1_dark</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Caption.Dark">
-        <item name="android:textColor">@color/mdt_caption_dark</item>
+        <item name="android:textColor">@color/material_caption_dark</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Menu.Dark">
-        <item name="android:textColor">@color/mdt_menu_dark</item>
+        <item name="android:textColor">@color/material_menu_dark</item>
     </style>
 
     <style name="TextAppearance.MaterialDesign.Button.Dark">
-        <item name="android:textColor">@color/mdt_button_dark</item>
+        <item name="android:textColor">@color/material_button_dark</item>
     </style>
 
 </resources>

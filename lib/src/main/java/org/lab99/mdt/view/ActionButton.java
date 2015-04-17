@@ -141,11 +141,11 @@ public class ActionButton extends Button {
     //  Default
 
     protected float getDefaultSize() {
-        return getContext().getResources().getDimension(R.dimen.mdt_fab_large_size);
+        return getContext().getResources().getDimension(R.dimen.material_fab_large_size);
     }
 
     protected float getDefaultIconSize() {
-        return getContext().getResources().getDimension(R.dimen.mdt_icon_size);
+        return getContext().getResources().getDimension(R.dimen.material_icon_size);
     }
 
     protected void drawIcon(Canvas canvas) {
