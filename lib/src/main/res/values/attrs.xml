@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="RoundButton">
-        <attr name="android:icon" />
-        <attr name="backgroundColor" format="color" />
-        <attr name="shadow" format="boolean" />
-        <attr name="iconSize" />
-        <attr name="depth" />
-        <attr name="android:padding" />
-        <attr name="widgetWidth" format="dimension" />
-        <attr name="widgetHeight" format="dimension" />
-    </declare-styleable>
     <declare-styleable name="Paper">
         <attr name="depth" format="float" />
         <attr name="rippleEnabled" format="boolean" />
