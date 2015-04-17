@@ -234,15 +234,21 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
         }
 
         public void setShadowSelf(ShadowDrawable shadow) {
-            mShadowSelf = (ShadowDrawable) copyDrawable(shadow);
+            if (shadow != null) {
+                mShadowSelf = (ShadowDrawable) shadow.getConstantState().newDrawable();
+            }
         }
 
         public void setRipple(RippleDrawable ripple) {
-            mRipple = (RippleDrawable) copyDrawable(ripple);
+            if (ripple != null) {
+                mRipple = (RippleDrawable) ripple.getConstantState().newDrawable();
+            }
         }
 
         public void setShadowChild(Drawable shadow) {
-            mShadowChildren = copyDrawable(shadow);
+            if (shadow != null) {
+                mShadowChildren = shadow.getConstantState().newDrawable();
+            }
         }
 
         public void setTouchTracker(TouchTracker tracker) {

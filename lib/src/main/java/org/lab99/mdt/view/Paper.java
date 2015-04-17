@@ -77,18 +77,6 @@ public class Paper extends TextView {
         return getPaperBackground().getOriginal();
     }
 
-    @Override
-    public void setBackground(Drawable background) {
-        setBackgroundDrawable(background);
-    }
-
-    @SuppressWarnings("deprecation")
-    @Override
-    public void setBackgroundDrawable(Drawable background) {
-        getPaperBackground().setOriginal(background);
-        postInvalidate();
-    }
-
     //  Getters & Setters
 
     public boolean isRippleEnabled() {
