@@ -3,7 +3,7 @@ package org.lab99.mdt.drawable;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
-class MessengerDrawable extends ProxyDrawable {
+public class MessengerDrawable extends ProxyDrawable {
     public MessengerDrawable(Drawable original, Drawable receiver) {
         this(original, receiver, null);
     }

@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 
 import org.lab99.mdt.drawable.PaperDrawable;
+import org.lab99.mdt.view.Paper;
 
 
 public class RippleActivity extends ActionBarActivity {
@@ -19,19 +20,19 @@ public class RippleActivity extends ActionBarActivity {
 
     private void addRipple() {
         View text = findViewById(R.id.text);
-        PaperDrawable.apply(text);
+        Paper.apply(text);
 
         View textTransparent = findViewById(R.id.text_transparent);
-        PaperDrawable text_background = PaperDrawable.apply(textTransparent);
+        PaperDrawable text_background = Paper.apply(textTransparent);
         text_background.setDepth(2);
 
         View button = findViewById(R.id.button1);
-        PaperDrawable.apply(button);
+        Paper.apply(button);
 
         View buttonInside = findViewById(R.id.button_inside);
         View arena = findViewById(R.id.arena);
 
-        PaperDrawable arena_background = PaperDrawable.apply(buttonInside, arena);
+        PaperDrawable arena_background = Paper.apply(buttonInside, arena);
         arena_background.setRippleColor(getResources().getColor(R.color.material_red_500));
     }
 

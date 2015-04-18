@@ -7,9 +7,6 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.view.View;
-
-import org.lab99.mdt.view.ViewCompat;
 
 
 public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
@@ -30,39 +27,6 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
 
     PaperDrawable(PaperState state, Resources res) {
         super(state, res);
-    }
-
-    public static PaperDrawable apply(View view) {
-        return apply(view, view);
-    }
-
-    /**
-     * @param touch_view  touch view will trigger the state change event;
-     * @param ripple_view the ripple view has to be able to receive 'onTouch' event
-     * @return
-     */
-    public static PaperDrawable apply(View touch_view, View ripple_view) {
-        Drawable original = touch_view.getBackground();
-
-        if (original instanceof PaperDrawable) {
-            //  don't swap the background if it's already PaperDrawable already.
-            return (PaperDrawable) original;
-        } else {
-            //  create new warp drawable for the old drawable
-            PaperDrawable background = new PaperDrawable(ripple_view.getBackground(), touch_view.getContext());
-            ViewCompat.setBackground(ripple_view, background);
-            //  attach touch tracker
-            ripple_view.setOnTouchListener(background.getTouchTracker());
-
-            if (touch_view != ripple_view) {
-                //  link the messenger for passing state message to 'background'
-                MessengerDrawable messenger = new MessengerDrawable(touch_view.getBackground(), background);
-                ViewCompat.setBackground(touch_view, messenger);
-                //  force ripple_view not 'clickable', so it will not trigger the state change event.
-                ripple_view.setClickable(false);
-            }
-            return background;
-        }
     }
 
     @Override

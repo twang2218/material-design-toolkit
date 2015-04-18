@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 
 import org.lab99.mdt.drawable.PaperDrawable;
+import org.lab99.mdt.view.Paper;
 
 
 public class ShadowActivity extends ActionBarActivity {
@@ -17,17 +18,17 @@ public class ShadowActivity extends ActionBarActivity {
         PaperDrawable background;
 
         View bg1 = findViewById(R.id.paper1);
-        background = PaperDrawable.apply(bg1);
+        background = Paper.apply(bg1);
         background.setDepth(2);
         background.setRippleOnTouchEnabled(true);
 
         View bg2 = findViewById(R.id.paper2);
-        background = PaperDrawable.apply(bg2);
+        background = Paper.apply(bg2);
         background.setDepth(2);
         background.setRippleOnTouchEnabled(false);
 
         View bg3 = findViewById(R.id.paper3);
-        background = PaperDrawable.apply(bg3);
+        background = Paper.apply(bg3);
         background.setDepth(2);
         background.setRippleOnTouchEnabled(true);
     }
