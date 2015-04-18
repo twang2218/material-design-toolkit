@@ -22,7 +22,8 @@ public class RippleActivity extends ActionBarActivity {
         PaperDrawable.apply(text);
 
         View textTransparent = findViewById(R.id.text_transparent);
-        PaperDrawable.apply(textTransparent);
+        PaperDrawable text_background = PaperDrawable.apply(textTransparent);
+        text_background.setDepth(2);
 
         View button = findViewById(R.id.button1);
         PaperDrawable.apply(button);
@@ -31,7 +32,7 @@ public class RippleActivity extends ActionBarActivity {
         View arena = findViewById(R.id.arena);
 
         PaperDrawable arena_background = PaperDrawable.apply(buttonInside, arena);
-        arena_background.getRipple().setRippleColor(getResources().getColor(R.color.material_red_500));
+        arena_background.setRippleColor(getResources().getColor(R.color.material_red_500));
     }
 
 }

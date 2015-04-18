@@ -9,7 +9,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 
 import org.lab99.mdt.R;
-import org.lab99.mdt.utils.DrawableCompat;
+import org.lab99.mdt.drawable.ColorDrawableCompat;
 
 public class ActionButton extends Button {
     private float mSize;
@@ -56,7 +56,7 @@ public class ActionButton extends Button {
         //  create background with given color
         GradientDrawable drawable = new GradientDrawable();
         drawable.setShape(GradientDrawable.OVAL);
-        drawable.setColor(DrawableCompat.getColor(colorDrawable));
+        drawable.setColor(ColorDrawableCompat.getColor(colorDrawable));
         return drawable;
     }
 

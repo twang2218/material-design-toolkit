@@ -9,9 +9,12 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
-import org.lab99.mdt.utils.ViewCompat;
+import org.lab99.mdt.view.ViewCompat;
+
 
 public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
+    Context mContext;
+
     public PaperDrawable(Context context) {
         this(null, null, context);
     }
@@ -22,7 +25,7 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
 
     PaperDrawable(Drawable original, PaperState state, Context context) {
         super(original, state);
-        ((PaperState) getConstantState()).setContext(context);
+        setContext(context);
     }
 
     PaperDrawable(PaperState state, Resources res) {
@@ -149,6 +152,17 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
         getShadowSelf().setRotation(rotation);
     }
 
+    public void setContext(Context context) {
+        mContext = context;
+        getShadowSelf().setContext(mContext);
+    }
+
+    /* Ripple */
+
+    public void setRippleColor(int color) {
+        getRipple().setRippleColor(color);
+    }
+
     static class PaperState extends ProxyState {
         //  0 - Self Shadow
         //  1 - Original Background
@@ -159,7 +173,6 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
         RippleDrawable mRipple;
         Drawable mShadowChildren;
         TouchTracker mTouchTracker;
-        Context mContext;
 
         PaperState(PaperState orig, Resources res) {
             super(orig, res);
@@ -178,7 +191,6 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
             mRipple = (RippleDrawable) state.mRipple.getConstantState().newDrawable(res);
             mShadowChildren = state.mShadowChildren.getConstantState().newDrawable(res);
             setTouchTracker(state.mTouchTracker);
-            mContext = state.mContext;
         }
 
         @Override
@@ -228,10 +240,6 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
             }
         }
 
-        public void setContext(Context context) {
-            mContext = context;
-            mShadowSelf.setContext(mContext);
-        }
 
         public void setShadowSelf(ShadowDrawable shadow) {
             if (shadow != null) {

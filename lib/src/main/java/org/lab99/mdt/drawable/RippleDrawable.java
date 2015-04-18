@@ -15,7 +15,7 @@ import android.graphics.drawable.Drawable;
 /**
  * Ripple Drawable of Material Design Ripple effect
  */
-public class RippleDrawable extends Drawable {
+class RippleDrawable extends Drawable {
     private final static int DEFAULT_MIN_RADIUS = 30;
     private float mMinRadius;
     private float mMaxRadius;

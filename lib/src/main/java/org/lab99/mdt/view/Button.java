@@ -8,7 +8,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 
 import org.lab99.mdt.R;
-import org.lab99.mdt.utils.DrawableCompat;
+import org.lab99.mdt.drawable.ColorDrawableCompat;
 import org.lab99.mdt.utils.Utils;
 
 public class Button extends Paper {
@@ -68,7 +68,7 @@ public class Button extends Paper {
         GradientDrawable drawable = new GradientDrawable();
         drawable.setShape(GradientDrawable.RECTANGLE);
         drawable.setCornerRadius(Utils.getPixelFromDip(getContext(), 2));
-        drawable.setColor(DrawableCompat.getColor(colorDrawable));
+        drawable.setColor(ColorDrawableCompat.getColor(colorDrawable));
         return drawable;
     }
 }

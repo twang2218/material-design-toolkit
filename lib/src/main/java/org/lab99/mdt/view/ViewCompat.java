@@ -1,4 +1,4 @@
-package org.lab99.mdt.utils;
+package org.lab99.mdt.view;
 
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;

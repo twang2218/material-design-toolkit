@@ -9,7 +9,7 @@ import android.support.v8.renderscript.RenderScript;
 
 import org.lab99.mdt.utils.Utils;
 
-public class ShadowDrawable extends Drawable {
+class ShadowDrawable extends Drawable {
     //  Max Depth
     private final static float DEPTH_MAX = 5;
 
@@ -125,12 +125,7 @@ public class ShadowDrawable extends Drawable {
     }
 
     public void setContext(Context context) {
-        try {
-            mState.mRender.setRenderScript(RenderScript.create(context));
-        } catch (Throwable error) {
-            error.printStackTrace();
-        }
-        Utils.init(context);
+        ((ShadowState) getConstantState()).mRender.setContext(context);
     }
 
     @Override
@@ -173,10 +168,10 @@ public class ShadowDrawable extends Drawable {
             return offset * SHADOW_BLUR_RADIUS_OFFSET_FACTOR;
         }
 
-        public float getShadowOffset() {
+        public float getShadowOffset(Context context) {
             //  offset = (a * depth * depth) + (b * depth)
             float offset = SHADOW_OFFSET_A * (mDepth * mDepth) + SHADOW_OFFSET_B * mDepth;
-            return Utils.getPixelFromDip(offset);
+            return Utils.getPixelFromDip(context, offset);
         }
     }
 

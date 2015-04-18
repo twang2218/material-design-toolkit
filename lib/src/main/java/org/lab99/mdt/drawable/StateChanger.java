@@ -3,7 +3,7 @@ package org.lab99.mdt.drawable;
 /**
  * Base class for State Changer
  */
-public abstract class StateChanger implements OnStateChangedListener {
+abstract class StateChanger implements OnStateChangedListener {
     protected final static long DEFAULT_DURATION = 300;
     private long mDuration = DEFAULT_DURATION;
     private boolean mEnabled = true;

@@ -1,15 +1,15 @@
 package org.lab99.mdt.drawable;
 
 public interface OnStateChangedListener {
-    public boolean onStateChange(int[] prev_states, int[] next_states);
+    boolean onStateChange(int[] prev_states, int[] next_states);
 
-    public void onPressed();
+    void onPressed();
 
-    public void onReleased();
+    void onReleased();
 
-    public void onFocused();
+    void onFocused();
 
-    public boolean isEnabled();
+    boolean isEnabled();
 
-    public void setEnabled(boolean enabled);
+    void setEnabled(boolean enabled);
 }

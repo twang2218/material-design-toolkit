@@ -1,5 +1,6 @@
 package org.lab99.mdt.drawable;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -10,10 +11,12 @@ import android.support.v4.util.LruCache;
 import android.support.v8.renderscript.Allocation;
 import android.support.v8.renderscript.RenderScript;
 import android.support.v8.renderscript.ScriptIntrinsicBlur;
+import android.util.Log;
 
 import org.lab99.mdt.utils.Utils;
 
 class ShadowRender {
+    private final static String TAG = "ShadowRender";
     //  Scale before blur
     //  shadow_scale(depth) = 2 * depth;
     private final static float SHADOW_SCALE_DEPTH_FACTOR = 2f;
@@ -29,6 +32,7 @@ class ShadowRender {
     RenderScript mRenderScript;
     private Cache mCache;
     private Paint mShadowPaint;
+    private Context mContext;
 
     public ShadowRender(RenderScript renderScript) {
         mRenderScript = renderScript;
@@ -57,7 +61,7 @@ class ShadowRender {
         if (shadow.mDepth > SHADOW_DEPTH_THRESHOLD && shadow.mMaskDrawer != null) {
 //            long begin = System.currentTimeMillis();
 
-            int padding = (int) Utils.getPixelFromDip(SHADOW_PADDING_IN_DIP);
+            int padding = (int) Utils.getPixelFromDip(mContext, SHADOW_PADDING_IN_DIP);
 
             int width = shadow.mBounds.width() + padding + padding;
             int height = shadow.mBounds.height() + padding + padding;
@@ -94,7 +98,7 @@ class ShadowRender {
 
                 //      calculate offset, handling rotation;
                 double rotation_alpha = Math.toRadians(shadow.mRotation);
-                float offset = shadow.getShadowOffset();
+                float offset = shadow.getShadowOffset(mContext);
                 float x = (float) Math.sin(rotation_alpha) * offset;
                 float y = (float) Math.cos(rotation_alpha) * offset;
 
@@ -154,6 +158,17 @@ class ShadowRender {
 
     public void setRenderScript(RenderScript renderScript) {
         mRenderScript = renderScript;
+    }
+
+    public void setContext(Context context) {
+        try {
+
+            mContext = context;
+            mRenderScript = RenderScript.create(mContext);
+        } catch (Throwable error) {
+            Log.e(TAG, "RenderScript creation failed.");
+            error.printStackTrace();
+        }
     }
 
     //  private

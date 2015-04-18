@@ -1,8 +1,5 @@
-package org.lab99.mdt.utils;
+package org.lab99.mdt.drawable;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 
@@ -34,18 +31,4 @@ public final class DrawableCompat extends android.support.v4.graphics.drawable.D
         return null;
     }
 
-    public static int getColor(ColorDrawable drawable) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            return drawable.getColor();
-        } else {
-            return getColorGingerbread(drawable);
-        }
-    }
-
-    private static int getColorGingerbread(ColorDrawable drawable) {
-        final Bitmap bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
-        final Canvas canvas = new Canvas(bitmap);
-        drawable.draw(canvas);
-        return bitmap.getPixel(0, 0);
-    }
 }

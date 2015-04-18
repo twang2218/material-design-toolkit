@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import org.lab99.mdt.R;
 import org.lab99.mdt.drawable.PaperDrawable;
-import org.lab99.mdt.utils.ViewCompat;
 
 public class Paper extends TextView {
 
