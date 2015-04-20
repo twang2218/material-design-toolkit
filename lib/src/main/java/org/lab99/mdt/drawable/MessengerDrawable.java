@@ -3,6 +3,9 @@ package org.lab99.mdt.drawable;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
+/**
+ * A special {@link Drawable} for passing the touch event to the wrapped Drawable, as a messenger.
+ */
 public class MessengerDrawable extends ProxyDrawable {
     public MessengerDrawable(Drawable original, Drawable receiver) {
         this(original, receiver, null);

@@ -11,6 +11,10 @@ import android.util.AttributeSet;
 import org.lab99.mdt.R;
 import org.lab99.mdt.drawable.ColorDrawableCompat;
 
+/**
+ * ActionButton is a {@link Button} with a round shape, normally there is an icon in it, instead of
+ * the text in {@link Button}.
+ */
 public class ActionButton extends Button {
     private float mSize;
     private Drawable mIcon;
@@ -111,28 +115,56 @@ public class ActionButton extends Button {
 
     //  Getters / Setters
 
+    /**
+     * Get the diameter.
+     *
+     * @return Return the size of the diameter.
+     */
     public float getSize() {
         return mSize;
     }
 
+    /**
+     * Set the diameter.
+     *
+     * @param size The diameter.
+     */
     public void setSize(float size) {
         mSize = size;
         postInvalidate();
     }
 
+    /**
+     * Get the icon.
+     *
+     * @return Return the drawable of the icon.
+     */
     public Drawable getIcon() {
         return mIcon;
     }
 
+    /**
+     * Set the icon.
+     *
+     * @param icon The drawable of the icon.
+     */
     public void setIcon(Drawable icon) {
         mIcon = icon;
         postInvalidate();
     }
 
+    /**
+     * Get the size of the icon.
+     * @return Return the size of the icon.
+     */
     public float getIconSize() {
         return mIconSize;
     }
 
+    /**
+     * Set the icon size.
+     * @param size The size of the icon.
+     */
     public void setIconSize(float size) {
         mIconSize = size;
         postInvalidate();

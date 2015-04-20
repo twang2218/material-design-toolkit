@@ -4,7 +4,17 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
+/**
+ * Utility class
+ */
 public final class Utils {
+    /**
+     * Get the pixel value from given Dip value.
+     *
+     * @param context The {@link Context} object.
+     * @param dip     The Dip value.
+     * @return Return the pixel value.
+     */
     public static float getPixelFromDip(Context context, float dip) {
         DisplayMetrics metrics;
         if (context != null) {

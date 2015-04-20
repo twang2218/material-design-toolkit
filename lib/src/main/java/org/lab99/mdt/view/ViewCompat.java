@@ -8,7 +8,18 @@ import android.view.View;
 /**
  * Compatibility class for View
  */
-public final class ViewCompat extends android.support.v4.view.ViewCompat {
+public class ViewCompat extends android.support.v4.view.ViewCompat {
+    /**
+     * Set the background of a {@link View}.
+     * <p/>
+     * Pre-Jelly Bean, the method name is {@link View#setBackgroundDrawable(Drawable)}, however,
+     * it's deprecated and changed to {@link View#setBackground(Drawable)}.
+     *
+     * @param view     The view which will be set a background.
+     * @param drawable The background {@link Drawable}.
+     * @see View#setBackground(Drawable)
+     * @see View#setBackgroundDrawable(Drawable)
+     */
     @SuppressWarnings("deprecation")
     public static void setBackground(View view, Drawable drawable) {
         //  Keep the original padding, otherwise they will be lost

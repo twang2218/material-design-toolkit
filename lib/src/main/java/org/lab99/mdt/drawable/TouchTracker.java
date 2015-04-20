@@ -18,10 +18,19 @@ public class TouchTracker implements View.OnTouchListener {
         return false;
     }
 
+    /**
+     * Get the last touch location.
+     *
+     * @return Return the coordinates of the last touch location.
+     */
     public PointF getLastTouch() {
         return mLastTouch;
     }
 
+    /**
+     * Get the last touch location in RAW value.
+     * @return Return the Raw coordinates of the last touch location.
+     */
     public PointF getLastTouchRaw() {
         return mLastTouchRaw;
     }

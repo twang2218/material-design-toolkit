@@ -8,7 +8,16 @@ import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 
-
+/**
+ * A wrapper {@link Drawable} to implement the material design concept.
+ * <p/>
+ * The drawable contains several component:
+ * <ul>
+ * <li>An original {@link Drawable} for the normal background.</li>
+ * <li>{@link RippleDrawable} for handling the ripple effect</li>
+ * <li>{@link ShadowDrawable} for handling the shadow beneath the view</li>
+ * </ul>
+ */
 public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
     Context mContext;
 
@@ -34,6 +43,13 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
         return new PaperState((PaperState) orig, res);
     }
 
+    /**
+     * Draw on the canvas.
+     *
+     * Draw the shadow first, and then draw the original drawable, then draw the ripple effect finally.
+     *
+     * @param canvas The given canvas.
+     */
     @Override
     public void draw(Canvas canvas) {
         getShadowSelf().draw(canvas);
@@ -42,6 +58,12 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
         getShadowChild().draw(canvas);
     }
 
+    /**
+     * Set the given state.
+     *
+     * @param stateSet the given states.
+     * @return
+     */
     @Override
     public boolean setState(int[] stateSet) {
         boolean ret = super.setState(stateSet);
@@ -68,54 +90,102 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
         return ((PaperState) getConstantState());
     }
 
-    public ShadowDrawable getShadowSelf() {
+    ShadowDrawable getShadowSelf() {
         return getPaperState().mShadowSelf;
     }
 
-    public RippleDrawable getRipple() {
+    RippleDrawable getRipple() {
         return getPaperState().mRipple;
     }
 
-    public Drawable getShadowChild() {
+    Drawable getShadowChild() {
         return getPaperState().mShadowChildren;
     }
 
+    /**
+     * Get the touch tracker, which is tracking the touch location.
+     *
+     * @return The {@link TouchTracker} object.
+     */
     public TouchTracker getTouchTracker() {
         return getPaperState().mTouchTracker;
     }
 
+    /**
+     * Check whether the ripple effect is enabled or not.
+     * @return Return true if the ripple is enabled.
+     */
     public boolean isRippleEnabled() {
         return getRipple().isEnabled();
     }
 
+    /**
+     * Enable the ripple effect.
+     * @param enabled Set to true if want to enable the ripple effect.
+     */
     public void setRippleEnabled(boolean enabled) {
         getRipple().setEnabled(enabled);
     }
 
+    /**
+     * Check whether the ripple will be triggered by touch event.
+     * @return Return true if the ripple will be triggered by touch event.
+     */
     public boolean isRippleOnTouchEnabled() {
         return getRipple().getOnStateChangedListener().isEnabled();
     }
 
+    /**
+     * Enable the ability to trigger the ripple effect via touch event.
+     * @param enabled Set to true if want to trigger the ripple effect by touch event.
+     */
     public void setRippleOnTouchEnabled(boolean enabled) {
         getRipple().getOnStateChangedListener().setEnabled(enabled);
     }
 
+    /**
+     * Get the shadow depth
+     * @return Return the shadow depth.
+     */
     public float getDepth() {
         return getShadowSelf().getDepth();
     }
 
+    /**
+     * Set the shadow depth for drawing the shadow.
+     *
+     * @param depth The depth of shadow, the effective range is from 0 to 5.
+     */
     public void setDepth(float depth) {
         getShadowSelf().setDepth(depth);
     }
 
+    /**
+     * Get the rotation value from the view.
+     * @return the rotation value.
+     */
     public float getRotation() {
         return getShadowSelf().getRotation();
     }
 
+    /**
+     * Set the rotation value of the view.
+     *
+     * The rotation of the attached view should be tracked, as the shadow should always be drawn under
+     * the view, in another word, the shadow should always represent the widget depth as the light is
+     * from the top, as the material design guideline said, no matter how the widget is rotated.
+     *
+     * @param rotation Set the same rotation value of the attached view.
+     */
     public void setRotation(float rotation) {
         getShadowSelf().setRotation(rotation);
     }
 
+    /**
+     * Set {@link Context} object.
+     * As {@link Context} object is required in {@link android.support.v8.renderscript.RenderScript} and {@link org.lab99.mdt.utils.Utils#getPixelFromDip(Context, float)}.
+     * @param context The {@link Context} object.
+     */
     public void setContext(Context context) {
         mContext = context;
         getShadowSelf().setContext(mContext);
@@ -123,6 +193,10 @@ public class PaperDrawable extends ProxyDrawable implements Drawable.Callback {
 
     /* Ripple */
 
+    /**
+     * Set ripple color.
+     * @param color The ripple color.
+     */
     public void setRippleColor(int color) {
         getRipple().setRippleColor(color);
     }

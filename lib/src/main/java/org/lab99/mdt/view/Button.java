@@ -11,6 +11,10 @@ import org.lab99.mdt.R;
 import org.lab99.mdt.drawable.ColorDrawableCompat;
 import org.lab99.mdt.utils.Utils;
 
+/**
+ * The material design Button widget, which is basically as same function as the stock button, but
+ * materialized.
+ */
 public class Button extends Paper {
     public Button(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -54,13 +58,21 @@ public class Button extends Paper {
 
     //  Getters & Setters
 
+    /**
+     * Override the {@link Paper#setBackground} to have special treatment of {@link ColorDrawable}.
+     * <p/>
+     * As the paper should be round cornered, a {@link GradientDrawable} will be created for this
+     * coloured paper as the background if the given Drawable is a {@link ColorDrawable}.
+     *
+     * @param background The new drawable for the background.
+     */
     @Override
-    public void setOriginalBackground(Drawable background) {
+    public void setBackground(Drawable background) {
         if (background instanceof ColorDrawable) {
             //  Convert color drawable to the default shape with the specified color
             background = getBackgroundFromColorDrawable((ColorDrawable) background);
         }
-        super.setOriginalBackground(background);
+        super.setBackground(background);
     }
 
     protected Drawable getBackgroundFromColorDrawable(ColorDrawable colorDrawable) {
