@@ -10,6 +10,13 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/button_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/str_color" />
+
+    <Button
         android:id="@+id/button_ripple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

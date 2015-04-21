@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name="org.lab99.mdt.demo.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,18 +18,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="org.lab99.mdt.demo.RippleActivity"
+            android:name=".ColorActivity"
+            android:label="@string/title_activity_color"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.lab99.mdt.demo.MainActivity" />
+        </activity>
+        <activity
+            android:name=".RippleActivity"
             android:label="@string/title_activity_ripple"
-            android:parentActivityName="org.lab99.mdt.demo.MainActivity"
+            android:parentActivityName=".MainActivity"
             tools:ignore="UnusedAttribute">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.lab99.mdt.demo.MainActivity" />
         </activity>
         <activity
-            android:name="org.lab99.mdt.demo.ShadowActivity"
+            android:name=".ShadowActivity"
             android:label="@string/title_activity_shadow"
-            android:parentActivityName="org.lab99.mdt.demo.MainActivity"
+            android:parentActivityName=".MainActivity"
             tools:ignore="UnusedAttribute">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

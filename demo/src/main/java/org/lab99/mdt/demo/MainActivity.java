@@ -14,6 +14,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(org.lab99.mdt.demo.R.layout.activity_main);
 
         //  link
+        link(R.id.button_color, ColorActivity.class);
         link(R.id.button_ripple, RippleActivity.class);
         link(R.id.button_shadow, ShadowActivity.class);
     }

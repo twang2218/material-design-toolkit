@@ -1,0 +1,1274 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="org.lab99.mdt.demo.ColorActivity">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_background">
+
+        <TableRow>
+
+            <TextView style="@style/color_palette_table_title" />
+
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="900" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="a100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="a200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="a400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="a700" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Red" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_red_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_red_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_red_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_red_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_red_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_red_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_red_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_red_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_red_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_red_900" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_red_a100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_red_a200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_red_a400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_red_a700" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Pink" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_pink_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_pink_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_pink_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_pink_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_pink_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_pink_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_pink_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_pink_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_pink_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_pink_900" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_pink_a100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_pink_a200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_pink_a400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_pink_a700" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Purple" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_purple_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_purple_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_purple_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_purple_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_purple_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_purple_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_purple_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_purple_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_purple_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_purple_900" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_purple_a100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_purple_a200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_purple_a400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_purple_a700" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Deep Purple" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_purple_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_purple_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_purple_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_purple_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_purple_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_purple_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_purple_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_purple_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_purple_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_purple_900" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_purple_a100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_purple_a200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_purple_a400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_purple_a700" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Indigo" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_indigo_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_indigo_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_indigo_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_indigo_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_indigo_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_indigo_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_indigo_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_indigo_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_indigo_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_indigo_900" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_indigo_a100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_indigo_a200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_indigo_a400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_indigo_a700" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Blue" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_900" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_a100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_a200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_a400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_a700" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Light Blue" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_blue_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_blue_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_blue_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_blue_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_blue_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_blue_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_blue_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_blue_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_blue_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_blue_900" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_blue_a100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_blue_a200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_blue_a400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_blue_a700" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Cyan" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_cyan_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_cyan_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_cyan_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_cyan_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_cyan_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_cyan_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_cyan_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_cyan_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_cyan_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_cyan_900" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_cyan_a100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_cyan_a200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_cyan_a400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_cyan_a700" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Teal" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_teal_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_teal_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_teal_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_teal_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_teal_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_teal_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_teal_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_teal_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_teal_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_teal_900" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_teal_a100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_teal_a200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_teal_a400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_teal_a700" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Green" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_green_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_green_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_green_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_green_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_green_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_green_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_green_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_green_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_green_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_green_900" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_green_a100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_green_a200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_green_a400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_green_a700" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Light Green" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_green_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_green_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_green_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_green_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_green_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_green_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_green_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_green_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_green_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_green_900" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_green_a100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_green_a200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_green_a400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_light_green_a700" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Lime" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_lime_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_lime_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_lime_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_lime_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_lime_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_lime_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_lime_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_lime_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_lime_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_lime_900" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_lime_a100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_lime_a200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_lime_a400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_lime_a700" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Yellow" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_yellow_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_yellow_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_yellow_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_yellow_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_yellow_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_yellow_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_yellow_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_yellow_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_yellow_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_yellow_900" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_yellow_a100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_yellow_a200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_yellow_a400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_yellow_a700" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Amber" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_amber_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_amber_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_amber_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_amber_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_amber_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_amber_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_amber_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_amber_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_amber_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_amber_900" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_amber_a100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_amber_a200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_amber_a400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_amber_a700" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Orange" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_orange_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_orange_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_orange_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_orange_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_orange_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_orange_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_orange_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_orange_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_orange_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_orange_900" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_orange_a100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_orange_a200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_orange_a400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_orange_a700" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Deep Orange" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_orange_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_orange_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_orange_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_orange_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_orange_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_orange_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_orange_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_orange_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_orange_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_orange_900" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_orange_a100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_orange_a200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_orange_a400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_deep_orange_a700" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Brown" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_brown_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_brown_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_brown_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_brown_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_brown_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_brown_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_brown_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_brown_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_brown_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_brown_900" />
+
+            <TextView style="@style/color_palette_table_title" />
+
+            <TextView style="@style/color_palette_table_title" />
+
+            <TextView style="@style/color_palette_table_title" />
+
+            <TextView style="@style/color_palette_table_title" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Grey" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_grey_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_grey_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_grey_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_grey_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_grey_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_grey_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_grey_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_grey_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_grey_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_grey_900" />
+
+            <TextView style="@style/color_palette_table_title" />
+
+            <TextView style="@style/color_palette_table_title" />
+
+            <TextView style="@style/color_palette_table_title" />
+
+            <TextView style="@style/color_palette_table_title" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:text="Blue Grey" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_grey_50" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_grey_100" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_grey_200" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_grey_300" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_grey_400" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_grey_500" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_grey_600" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_grey_700" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_grey_800" />
+
+            <TextView
+                style="@style/color_palette_table_title"
+                android:background="@color/material_blue_grey_900" />
+
+            <TextView style="@style/color_palette_table_title" />
+
+            <TextView style="@style/color_palette_table_title" />
+
+            <TextView style="@style/color_palette_table_title" />
+
+            <TextView style="@style/color_palette_table_title" />
+
+        </TableRow>
+
+
+    </TableLayout>
+
+</ScrollView>

@@ -126,7 +126,7 @@
     <color name="material_teal_200">#80cbc4</color>
     <color name="material_teal_300">#4db6ac</color>
     <color name="material_teal_400">#26a69a</color>
-    <color name="material_teal_500">#9688</color>
+    <color name="material_teal_500">#009688</color>
     <color name="material_teal_600">#00897b</color>
     <color name="material_teal_700">#00796b</color>
     <color name="material_teal_800">#00695c</color>
@@ -165,7 +165,7 @@
     <color name="material_light_green_a200">#b2ff59</color>
     <color name="material_light_green_a400">#76ff03</color>
     <color name="material_light_green_a700">#64dd17</color>
-    <!--lime-->
+    <!--Lime-->
     <color name="material_lime_50">#f9fbe7</color>
     <color name="material_lime_100">#f0f4c3</color>
     <color name="material_lime_200">#e6ee9c</color>
