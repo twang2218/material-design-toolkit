@@ -4,7 +4,7 @@ Material Design Toolkit
 
 [![Build Status](https://travis-ci.org/twang2218/material-design-toolkit.png?branch=master)](https://travis-ci.org/twang2218/material-design-toolkit)
 
-Implementation of some building blocks of Material Design
+Welcome to Material Design Toolkit project. This is an implementation of some building blocks of Material Design.
 
 Usage
 ------
@@ -41,12 +41,12 @@ The Material Design Toolkit library includes pre-defined material design color p
 
 The name format of each color is ```@color/material_COLOR_VARIATION```, 
 
-the COLOR can be one of 
+the ```COLOR``` can be one of
 ```Javascript
 {red, pink, purple, deep_purple, indigo, blue, light_blue, cyan, teal, green, light_green, lime, yellow, amber, orange, deep_orange, brown, grey, blue_grey}
 ```
 
-the VARIATION can be one of
+the ```VARIATION``` can be one of
 ```Javascript
 {50, 100, 200, 300, 400, 500, 600, 700, 800, 900, a100, a200, a400, a700}
 ```
