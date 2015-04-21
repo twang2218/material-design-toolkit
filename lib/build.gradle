@@ -36,3 +36,6 @@ dependencies {
     compile 'com.android.support:support-v4:22.0.0'
     compile 'com.nineoldandroids:library:2.4.0'
 }
+
+
+apply from: 'maven-push.gradle'
