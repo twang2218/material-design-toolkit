@@ -37,6 +37,22 @@ Palette
 
 The Material Design Toolkit library includes pre-defined material design color palette resource, which are defined by the [Material Design guideline > Style > Color](http://www.google.com/design/spec/style/color.html).
 
+![Color Palette](art/color_palette.png)
+
+The name format of each color is ```@color/material_COLOR_VARIATION```, 
+
+the COLOR can be one of 
+```Javascript
+{red, pink, purple, deep_purple, indigo, blue, light_blue, cyan, teal, green, light_green, lime, yellow, amber, orange, deep_orange, brown, grey, blue_grey}
+```
+
+the VARIATION can be one of
+```Javascript
+{50, 100, 200, 300, 400, 500, 600, 700, 800, 900, a100, a200, a400, a700}
+```
+
+However, there is no ```{a100, a200, a400, a700}``` for color ```{brown, grey, blue_grey}```;
+
 ![Color Palette](art/resource_color.png)
 
 To help referencing the variation of each color, there is an array of color for each base color, such as, for Red,
@@ -60,7 +76,8 @@ To help referencing the variation of each color, there is an array of color for 
     </array>
 ```
 
-There also are 3 base color array, which each item is referenced to those color variation array.
+There are also 3 base color array, one for all color, and one for color without accent color, one for the color with accent color. The ```Brown```, ```Grey```, and ```Blue Grey``` don't have accent color variations.
+And each item of the array is referenced to those color variation array.
 
 ```xml
     <array name="material_color">
