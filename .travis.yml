@@ -1,5 +1,6 @@
 language: android
 jdk: openjdk7
+sudo: false
 env:
     matrix:
         - ANDROID_TARGET=android-22  ANDROID_ABI=armeabi-v7a
@@ -13,14 +14,14 @@ env:
 android:
     components:
         - build-tools-22.0.1
+
         # targets
-        # - android-8
-        # - android-10
-        # - android-15
-        # - android-16
-        # - android-19
-        # - android-20
+
+        # add '-android-8' to let the test platform install the v8 sys-img, so we can test on.
+        - android-8
+
         - android-22
+
         # extra
         - extra-android-support
         - extra-android-m2repository
@@ -36,6 +37,7 @@ branches:
         - gh-pages
 
 before_script:
+    - android list target
     - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
     - emulator -avd test -no-skin -no-audio -no-window &
     - android-wait-for-emulator
