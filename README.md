@@ -132,9 +132,59 @@ And each item of the array is referenced to those color variation array.
 Widgets
 -------
 
- * Paper
- * Button
- * ActionButton
+### Paper
 
+As described in [Material Design guideline](http://www.google.com/design/spec/what-is-material/environment.html),
+material design is inspired by paper and ink. Paper is the building block for any widgets, such as,
+Button, Floating Action Button, or Cards.
 
+To create a paper widget, there are a few important features need to be mentioned.
+
+#### Shadow
+
+Paper is existed in a 3D space, paper should have a shadow beneath it, so viewer can get the sense
+of the depth between the paper and the background. And as the guideline said, the shadow are composited
+by kind of shadow.
+
+![Color Palette](art/shadow_composition.png)
+
+The shadow of key light give the sense of the depth, and the shadow of ambient light define the shape
+of paper. During the elevation of the paper, the depth is changed, so the shadow of the key light.
+However, the shadow of the ambient light will keep the same.
+
+The ```ShadowDrawable``` and ```ShadowRender``` are implemented with the above idea, and the shadow
+will be drawn below the widget.
+
+#### Ripple
+
+To response the user's action, the ripple effect will be triggered. That indicators where and what 
+the user has been triggered. ```RippleDrawable``` is created to implement the idea. And a ```TouchTracker```
+class is created to help to track user's touch location.
+
+#### PaperDrawable
+
+To implement shadow and ripple, an special wrapper drawable, ```PaperDrawable``` is created.
+The ```PaperDrawable``` contains 3 layers. From top to bottom, they are:
+
+ * Ripple layer
+ * Background layer
+ * Shadow layer
+ 
+The ```PaperDrawable``` will be used as the background drawable of ```Paper```, any original background
+drawable operations will be redirected to the inner background layer. So, user can specify any drawable
+as the background they want, and still get the shadow and ripple effect when they are enabled.
+
+#### Materialize stock widgets
+
+There is a static method ```apply()``` which can be used to materialize the traditional widget, by
+wrapping the original background drawable with ```PaperDrawable```, so the widget will have shadow and
+ripple.
+ 
+### Button
+
+A ```Button``` is a clickable ```Paper```, normally with a round-cornered background.
+
+### ActionButton
+
+An ```ActionButton``` is a ```Button``` which has round background.
 
