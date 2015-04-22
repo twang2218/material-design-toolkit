@@ -37,5 +37,11 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
 }
 
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    destinationDir = file("javadoc/")
+    failOnError false
+}
 
 apply from: 'maven-push.gradle'
