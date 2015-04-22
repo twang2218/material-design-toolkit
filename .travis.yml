@@ -3,23 +3,19 @@ jdk: openjdk7
 sudo: false
 env:
     matrix:
-        - ANDROID_TARGET=android-22  ANDROID_ABI=armeabi-v7a
+    # disable the Android 5.1 test as it's not fully supported by travis.ci.
+    #    - ANDROID_TARGET=android-22  ANDROID_ABI=armeabi-v7a
         - ANDROID_TARGET=android-21  ANDROID_ABI=armeabi-v7a
         - ANDROID_TARGET=android-19  ANDROID_ABI=armeabi-v7a
         - ANDROID_TARGET=android-16  ANDROID_ABI=armeabi-v7a
         - ANDROID_TARGET=android-15  ANDROID_ABI=armeabi-v7a
         - ANDROID_TARGET=android-10  ANDROID_ABI=armeabi
-        - ANDROID_TARGET=android-8  ANDROID_ABI=armeabi
 
 android:
     components:
         - build-tools-22.0.1
 
         # targets
-
-        # add '-android-8' to let the test platform install the v8 sys-img, so we can test on.
-        - android-8
-
         - android-22
 
         # extra
