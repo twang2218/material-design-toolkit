@@ -2,6 +2,8 @@ language: android
 jdk: openjdk7
 env:
     matrix:
+        - ANDROID_TARGET=android-22  ANDROID_ABI=armeabi-v7a
+        - ANDROID_TARGET=android-21  ANDROID_ABI=armeabi-v7a
         - ANDROID_TARGET=android-19  ANDROID_ABI=armeabi-v7a
         - ANDROID_TARGET=android-16  ANDROID_ABI=armeabi-v7a
         - ANDROID_TARGET=android-15  ANDROID_ABI=armeabi-v7a
@@ -10,14 +12,15 @@ env:
 
 android:
     components:
-        - build-tools-20.0.0
+        - build-tools-22.0.1
         # targets
-        - android-8
-        - android-10
-        - android-15
-        - android-16
-        - android-19
-        - android-20
+        # - android-8
+        # - android-10
+        # - android-15
+        # - android-16
+        # - android-19
+        # - android-20
+        - android-22
         # extra
         - extra-android-support
         - extra-android-m2repository
